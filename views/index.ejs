@@ -31,12 +31,13 @@
           <img src="images/user-icon.png" alt="user-icon">
         </div>
         <div class="user-detail">
-            <h2>name</h2>
+            <h2 id="username"><%= username %></h2>
             <p><a href="/">profile<img src="images/new-window.png" alt="new-window"></a></p>
         </div>
       </section>
       <section class="post-area">
         <form action="/" method="post">
+          <input type="hidden" name="username" id="input-username" value="">
           <textarea name="text" id="" cols="30" rows="10" placeholder="new micropost"></textarea>
           <input type="submit" value="post">
         </form>
@@ -51,20 +52,21 @@
           <li class="archive-item">
             <div class="archive-item__user">
               <img src="images/user-icon.png" alt="user-icon">
-              <p><span>name</span></p>
+              <p><span><%= username %></span></p>
             </div>
             <div class="archive-item__status">
               <input type="submit" value="edit">
               <input type="submit" value="delete">
             </div>
             <div class="archive-item__post">
-            <p><%= message %></p>
-            <time>2022/05/15/00:00</time>
+            <p><%= message[0] %></p>
+            <time><%= message[1]%></time>
           </div>
         </li> 
         <% } %>
       </ul>
     </section>
   </main>
+  <script src="javascripts/index.js"></script>
 </body>
 </html>
