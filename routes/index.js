@@ -1,30 +1,41 @@
 const express = require('express');
 const router = express.Router();
-require('date-utils');
-const messageArray = [];
+
+// DB接続
+const mysql = require('mysql');
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'root',
+  database: 'Micropost'
+});
+// 接続の確認
+connection.connect(function(err){
+  if(err) throw err ;
+  console.log('Connected');
+});
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { 
-    title: 'Micropost',
-    username: 'テストタロウ',
-    messageArray: ''
+  const sql = `SELECT * FROM microposts ORDER BY id DESC`;
+  connection.query(sql,function(err,result,fields) {
+    if(err) throw err;
+    console.log(result);
+    res.render('index',{
+      microposts: result
+    });
   });
 });
 
-router.post('/', function(req, res, next) {
-  const username = req.body['username'];
-  const text = req.body['text'];
-  const date = new Date();
-  const currentTime = date.toFormat('YYYY/MM/DD HH24:MI:SS')
-  messageArray.push([text,currentTime]);
-  console.log(messageArray);
-
-  res.render('index', {
-    title: 'Micropost',
-    username: username,
-    messageArray: messageArray
-  });
+router.post('/',function(req, res, next) {
+  const text = req.body.text;
+  const sql = `INSERT INTO microposts (message,user_id) VALUES ('${text}',1)`;
+  
+  connection.query(sql,function(err,result,fields) {
+    if(err) throw err;
+    console.log(result);
+    res.redirect('/');
+  })
 });
 
 module.exports = router;

@@ -83,6 +83,10 @@ body {
 
 .post-area input{
   width: 100%;
+  margin: 10px 0;
+}
+
+.post-area input:last-child{
   padding: 10px;
   display: block;
   border-radius: 5px;
