@@ -1,77 +1,13 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- fontAwesome -->
-  <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-  <!-- CSS -->
-  <link rel="stylesheet" href="stylesheets/reset.css">
-  <link rel="stylesheet" href="stylesheets/style.css">
-  <title>Micropost</title>
-</head>
-<body>
-  <header class="header">
-    <div class="title">
-      <h1>Micropost</h1>
-    </div>
-    <nav>
-      <ul class="menu">
-        <li class="menu-item">Signup</li>
-        <li class="menu-item">Signin</li>
-      </ul>
-    </nav>
-  </header>
-
-  <aside class="sidebar">
-    <article class="sidebar-inner">
-      <section class="user-area">
-        <div class="user-icon">
-          <img src="images/user-icon.png" alt="user-icon">
+<%- include('./header') %>
+<main class="top-main">
+    <section class="top-fv">
+        <div class="top-title">
+            <h2>truthPost</h2>
+            <p>実名で真実を語ろう。</p>
         </div>
-        <div class="user-detail">
-            <h2 id="username">taic-dev</h2>
-            <p><a href="/">profile<img src="images/new-window.png" alt="new-window"></a></p>
-        </div>
-      </section>
-      <section class="post-area">
-        <form action="/" method="post">
-          <textarea name="text" id="" cols="30" rows="10" placeholder="new micropost"></textarea>
-          <input type="submit" value="post">
-        </form>
-      </section>
-    </article>
-  </aside>
-  <main class="main">
-
-    <section class="archive-area">
-      <ul class="archive-list">
-        <% microposts.forEach((value)=> { %>
-          <li class="archive-item">
-            <div class="archive-item__user">
-              <img src="images/user-icon.png" alt="user-icon">
-              <p><span>taic-dev</span></p>
-            </div>
-            <div class="archive-item__status">
-              <input type="submit" value="edit">
-              <input type="submit" value="delete">
-            </div>
-            <div class="archive-item__post">
-            <p><%= value.message %></p>
-            <time>
-              <%= 
-                value.created_at.getFullYear()+"/"
-                +(value.created_at.getMonth()+1)+"/"
-                +value.created_at.getDate();
-              %>
-            </time>
-          </div>
-        </li> 
-        <% }); %>
-      </ul>
+        <ul class="top-btn">
+            <li><a href="/signin">Sign in</a></li>
+            <li><a href="/signup">Sign up</a></li>
+        </ul>
     </section>
-  </main>
-  <script src="javascripts/index.js"></script>
-</body>
-</html>
+</main>
