@@ -3,21 +3,22 @@ const router = express.Router();
 const connection = require('../db/connection');
 
 router.get('/',function(req,res,next){
-    res.render('signup');
+    res.render('login');
 });
 
 router.post('/',function(req,res,next){
-    const username = req.body.username;
     const mail = req.body.mail;
     const password = req.body.password;
-    const password_confirmation = req.body.password_confirmation;
-    const sql = `INSERT INTO users (name,email,password,isAdmin) VALUES ('${username}','${mail}','${password}',0)`
 
+    const sql = `SELECT * FROM users WHERE email='${mail}' AND password='${password}'`;
     connection.query(sql,function(err,result,fields){
         if(err) throw err;
-        console.log(result);
-        res.redirect('/login');
-    })
+        if(result[0] !== undefined){
+            res.redirect('/top');
+        }else{
+            res.redirect('/login');
+        }
+    });
 });
 
 module.exports = router;

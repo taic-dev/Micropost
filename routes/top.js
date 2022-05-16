@@ -1,20 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
-// DB接続
-const mysql = require('mysql');
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'root',
-  database: 'Micropost'
-});
-
-// 接続の確認
-connection.connect(function(err){
-  if(err) throw err ;
-  console.log('Connected');
-});
+const connection = require('../db/connection');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

@@ -8,7 +8,7 @@ const app = express();
 
 const indexRouter = require('./routes');
 const topRouter = require('./routes/top');
-const signinRouter = require('./routes/signin');
+const loginRouter = require('./routes/login');
 const signupRouter = require('./routes/signup');
 
 const usersRouter = require('./routes/users');
@@ -27,7 +27,7 @@ app.use(express.static('public'));
 
 app.use('/', indexRouter);
 app.use('/top', topRouter);
-app.use('/signin', signinRouter);
+app.use('/login', loginRouter);
 app.use('/signup', signupRouter);
 app.use('/users', usersRouter);
 

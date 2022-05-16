@@ -1,0 +1,19 @@
+<%- include( './header' ) %>
+<main class="login-main">
+    <section class="sign-fv">
+        <div class="login-title">
+            <h2>Log in</h2>
+        </div>
+        <form action="/login" method="post" class="login-form">
+            <div class="form-group">
+                <label for="mail">メールアドレス</label>
+                <input type="mail" name="mail" id="mail">
+            </div>
+            <div class="form-group">
+                <label for="password">パスワード</label>
+                <input type="password" name="password" id="password">
+            </div>
+            <input type="submit" value="Log in">
+        </form>
+    </section>
+</main>
