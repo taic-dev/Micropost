@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const session = require('express-session');
 
 const app = express();
 
@@ -10,8 +11,6 @@ const indexRouter = require('./routes');
 const topRouter = require('./routes/top');
 const loginRouter = require('./routes/login');
 const signupRouter = require('./routes/signup');
-
-const usersRouter = require('./routes/users');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -25,11 +24,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.static('public'));
 
+const session_opt = {
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false,
+  cokkie:{maxAge: 60 * 60 * 1000}
+}
+
+app.use(session(session_opt));
+
 app.use('/', indexRouter);
 app.use('/top', topRouter);
 app.use('/login', loginRouter);
 app.use('/signup', signupRouter);
-app.use('/users', usersRouter);
+app.get('/logout',(req,res)=>{
+  req.session.destroy((err)=>{
+    res.redirect('/');
+  });
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

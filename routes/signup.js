@@ -3,7 +3,9 @@ const router = express.Router();
 const connection = require('../db/connection');
 
 router.get('/',function(req,res,next){
-    res.render('signup');
+    res.render('signup',{
+        isAuth: false
+    });
 });
 
 router.post('/',function(req,res,next){
