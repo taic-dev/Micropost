@@ -98,12 +98,21 @@ main{
 
 .form-group input{
   width: 100%;
-  height: 30px;
+  height: 40px;
   text-align: left;
   margin-top: 20px;
   padding: 0 10px;
   border: solid 1px;
   border-radius: 5px;
+}
+
+.login-form span, .signup-form span{
+  display: block;
+  color: red;
+  background: #FFEBE8;
+  margin: 10px 0;
+  padding: 10px 0;
+  font-size: 12px;
 }
 
 .wrapper{

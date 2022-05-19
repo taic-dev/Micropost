@@ -30,7 +30,6 @@ const session_opt = {
   saveUninitialized: false,
   cokkie:{maxAge: 60 * 60 * 1000}
 }
-
 app.use(session(session_opt));
 
 app.use('/', indexRouter);
