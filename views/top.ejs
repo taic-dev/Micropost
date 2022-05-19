@@ -1,12 +1,12 @@
 <%- include("./header"); %>
-  <aside class="sidebar">
-    <article class="sidebar-inner">
+  <section class="wrapper">
+    <aside class="sidebar">
       <section class="user-area">
         <div class="user-icon">
           <img src="images/user-icon.png" alt="user-icon">
         </div>
         <div class="user-detail">
-            <h2 id="username"><%- username %></h2>
+            <h2 id="username"><%= username %></h2>
             <p><a href="/">profile<img src="images/new-window.png" alt="new-window"></a></p>
         </div>
       </section>
@@ -16,36 +16,36 @@
           <input type="submit" value="post">
         </form>
       </section>
-    </article>
-  </aside>
-  <main class="micropost-main">
-    <section class="archive-area">
-      <ul class="archive-list">
-        <% microposts.forEach((value)=> { %>
-          <li class="archive-item">
-            <div class="archive-item__user">
-              <img src="images/user-icon.png" alt="user-icon">
-              <p><span><%- username %></span></p>
+    </aside>
+    <main class="micropost-main">
+      <section class="archive-area">
+        <ul class="archive-list">
+          <% microposts.forEach((value)=> { %>
+            <li class="archive-item">
+              <div class="archive-item__user">
+                <img src="images/user-icon.png" alt="user-icon">
+                <p><span><%= username %></span></p>
+              </div>
+              <div class="archive-item__status">
+                <input type="submit" value="edit">
+                <input type="submit" value="delete">
+              </div>
+              <div class="archive-item__post">
+              <p><%= value.message %></p>
+              <time>
+                <%= 
+                  value.created_at.getFullYear()+"/"
+                  +(value.created_at.getMonth()+1)+"/"
+                  +value.created_at.getDate();
+                %>
+              </time>
             </div>
-            <div class="archive-item__status">
-              <input type="submit" value="edit">
-              <input type="submit" value="delete">
-            </div>
-            <div class="archive-item__post">
-            <p><%= value.message %></p>
-            <time>
-              <%= 
-                value.created_at.getFullYear()+"/"
-                +(value.created_at.getMonth()+1)+"/"
-                +value.created_at.getDate();
-              %>
-            </time>
-          </div>
-        </li> 
-        <% }); %>
-      </ul>
-    </section>
-  </main>
-  <script src="javascripts/index.js"></script>
+          </li> 
+          <% }); %>
+        </ul>
+      </section>
+    </main>
+  </section>
+<script src="javascripts/index.js"></script>
 </body>
 </html>
