@@ -1,0 +1,35 @@
+<%- include( './header' ) %>
+<section class="wrapper">
+    <aside class="mypage-sidebar">
+        <section class="mypage-area">
+            <div class="mypage-icon">
+                <img src="images/user-icon.png" alt="user-icon">
+            </div>
+            <div class="post-score">
+                <p>00</p>
+                <p>POST</p>
+            </div>
+        </section>
+    </aside>
+    <main class="mypage-main">
+        <form action="/mypage" method="post" class="mypage-detail">
+            <div class="form-group">
+                <label for="">ユーザー名</label>
+                <input type="text" value="<%= form.username %>">
+            </div>
+            <div class="form-group">
+                <label for="">メールアドレス</label>
+                <input type="text" value="<%= form.mail %>">
+            </div>
+            <div class="form-group">
+                <label for="">パスワード</label>
+                <input type="password" value="<%= form.password %>">
+            </div>
+            <div class="form-group">
+                <label for="">パスワード確認</label>
+                <input type="password" value="<%= form.password %>">
+            </div>
+            <input type="submit" value="Change!!" class="change-btn">
+        </form>
+    </main>
+</section>

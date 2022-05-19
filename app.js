@@ -11,6 +11,7 @@ const indexRouter = require('./routes');
 const topRouter = require('./routes/top');
 const loginRouter = require('./routes/login');
 const signupRouter = require('./routes/signup');
+const mypageRouter = require('./routes/mypage');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -36,6 +37,7 @@ app.use('/', indexRouter);
 app.use('/top', topRouter);
 app.use('/login', loginRouter);
 app.use('/signup', signupRouter);
+app.use('/mypage', mypageRouter);
 app.get('/logout',(req,res)=>{
   req.session.destroy((err)=>{
     res.redirect('/');

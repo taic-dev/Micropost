@@ -63,7 +63,7 @@ main{
   justify-content: center;
 }
 
-.top-btn li a,.login-btn,.signup-btn{
+.top-btn li a,.login-btn,.signup-btn,.change-btn{
   color: var(--main-text-color);
   background: var(--main-bg-color);
   margin: 20px;
@@ -88,8 +88,9 @@ main{
   background: var(--main-bg-color);
   display: block;
   width: 180px;
-  padding: 3px;
+  padding: 7px;
   border-radius: 5px;
+  font-size: 12px;
 
   position: absolute;
   top: 0;
@@ -223,10 +224,44 @@ main{
   font-size: 10px;
 }
 
+/* mypage */
+.mypage-main{
+  width: 50%;
+}
+
+.mypage-sidebar{
+  margin-top: 120px;
+  width: 50%;
+}
+
+.mypage-area,.mypage-main{
+  text-align: center;
+}
+
+.mypage-area img{
+  width: 200px;
+  height: 200px;
+  border: #6C63FF 5px solid;
+  border-radius: 50%;
+}
+
+.post-score{
+  margin-top: 50px;
+}
+
+.post-score p:first-child{
+  font-size: 40px; 
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.post-score p:last-child{font-size: 12px;}
+
+
 @media screen and (max-width:900px) {
   .wrapper{
     display: block;
     max-width: 540px;
   }
   .sidebar,.micropost-main{width: auto;}
+  .mypage-main,.mypage-sidebar{width: 100%;}
 }
