@@ -7,6 +7,11 @@
 
   --main-bg-color: #333;
   --sub-bg-color: #fff;
+
+  --message-error: red;
+  --bg-error: #FFEBE8;
+  --message-success: green;
+  --bg-success: #DBFFDB;
 }
 
 
@@ -16,6 +21,15 @@ body {
 
 main{
   margin-top: 60px;
+}
+
+.success-message{
+  display: block;
+  margin: 10px 0;
+  padding: 10px 0;
+  font-size: 12px;
+  color: var(--message-success);
+  background: var(--bg-success);
 }
 
 .header{

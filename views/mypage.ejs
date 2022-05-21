@@ -13,21 +13,22 @@
     </aside>
     <main class="mypage-main">
         <form action="/mypage" method="post" class="mypage-detail">
+            <span class="success-message"><%= message %></span>
             <div class="form-group">
                 <label for="">ユーザー名</label>
-                <input type="text" value="<%= form.username %>">
+                <input type="text" value="<%= form.username %>" name="username">
             </div>
             <div class="form-group">
                 <label for="">メールアドレス</label>
-                <input type="text" value="<%= form.mail %>">
+                <input type="text" value="<%= form.mail %>" name="mail">
             </div>
             <div class="form-group">
                 <label for="">パスワード</label>
-                <input type="password" value="<%= form.password %>">
+                <input type="password" value="<%= form.password %>" name="password">
             </div>
             <div class="form-group">
                 <label for="">パスワード確認</label>
-                <input type="password" value="<%= form.password %>">
+                <input type="password" value="<%= form.password %>" name="password_confirmation">
             </div>
             <input type="submit" value="Change!!" class="change-btn">
         </form>
