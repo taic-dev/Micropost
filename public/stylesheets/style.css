@@ -32,6 +32,15 @@ main{
   background: var(--bg-success);
 }
 
+.error-message{
+  display: block;
+  margin: 10px 0;
+  padding: 10px 0;
+  font-size: 12px;
+  color: var(--message-error);
+  background: var(--bg-error);
+}
+
 .header{
   height: 60px;
   padding: 0 20px;

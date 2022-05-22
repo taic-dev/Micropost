@@ -13,14 +13,30 @@
     </aside>
     <main class="mypage-main">
         <form action="/mypage" method="post" class="mypage-detail">
-            <span class="success-message"><%= message %></span>
+            <% if(message){ %>
+                <span class="success-message"><%= message %></span>
+            <% } %>
             <div class="form-group">
                 <label for="">ユーザー名</label>
                 <input type="text" value="<%= form.username %>" name="username">
+                <% if(errors){ %>
+                    <% errors.find(obj=>{ %>
+                        <% if(obj.param == 'username'){ %>
+                            <span class="error-message"><%= obj.msg %></span>
+                        <% } %>
+                    <% }); %>
+                <% } %>
             </div>
             <div class="form-group">
                 <label for="">メールアドレス</label>
                 <input type="text" value="<%= form.mail %>" name="mail">
+                <% if(errors){ %>
+                    <% errors.find(obj=>{ %>
+                        <% if(obj.param == 'mail'){ %>
+                            <span class="error-message"><%= obj.msg %></span>
+                        <% } %>
+                    <% }); %>
+                <% } %>
             </div>
             <div class="form-group">
                 <label for="">パスワード</label>
@@ -29,6 +45,13 @@
             <div class="form-group">
                 <label for="">パスワード確認</label>
                 <input type="password" value="<%= form.password %>" name="password_confirmation">
+                <% if(errors){ %>
+                    <% errors.find(obj=>{ %>
+                        <% if(obj.param == 'password'){ %>
+                            <span class="error-message"><%= obj.msg %></span>
+                        <% } %>
+                    <% }); %>
+                <% } %>
             </div>
             <input type="submit" value="Change!!" class="change-btn">
         </form>

@@ -35,13 +35,14 @@ router.post('/',[
         })
 
     }else{
-        const sql = `SELECT id , name FROM users WHERE email='${mail}' AND password='${password}'`;
+        const sql = `SELECT id , name , email FROM users WHERE email='${mail}' AND password='${password}'`;
         connection.query(sql,function(err,result,fields){
             if(err) throw err;
 
             if(result[0] !== undefined){
                 req.session.user_id = result[0].id;
                 req.session.username = result[0].name;
+                req.session.mail = result[0].email;
                 res.redirect('top');
             }else{
                 res.render('login',{

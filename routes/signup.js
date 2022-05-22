@@ -44,7 +44,7 @@ router.post('/',[
         });
     }else{
         const errors_arr = [];
-        const sql = `SELECT * FROM users WHERE name = '${username}' AND email = '${mail}'`;
+        const sql = `SELECT * FROM users WHERE name = '${username}' OR email = '${mail}'`;
         connection.query(sql,function(err,result,fields){
             console.log(result);
 
