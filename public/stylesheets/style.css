@@ -279,6 +279,13 @@ main{
 }
 .post-score p:last-child{font-size: 12px;}
 
+.footer{
+  text-align: center;
+  padding: 20px;
+  color: var(--main-text-color);
+  background: var(--main-bg-color);
+}
+
 
 @media screen and (max-width:900px) {
   .wrapper{

@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
     const user_id = req.session.user_id;
     const username = req.session.username;
     const isAuth = Boolean(user_id);
-    const sql = `SELECT * FROM microposts ORDER BY id DESC`;
+    const sql = `SELECT * FROM microposts ORDER BY id DESC LIMIT 5`;
     connection.query(sql,function(err,result,fields) {
       if(err) throw err;
       console.log("result"+result);
