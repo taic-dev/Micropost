@@ -27,10 +27,10 @@
                 <img src="images/user-icon.png" alt="user-icon">
                 <p><span><%= value.username %></span></p>
               </div>
-              <div class="archive-item__status">
-                <input type="submit" value="edit">
+              <form action="/delete" method="post" class="archive-item__status" onsubmit="return delete_btn()">
+                <input type="hidden" name="micropost_id" value="<%= value.id %>">
                 <input type="submit" value="delete">
-              </div>
+              </form>
               <div class="archive-item__post">
               <p><%= value.message %></p>
               <time>

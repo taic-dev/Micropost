@@ -6,3 +6,11 @@ logout.addEventListener('click',(e)=>{
         window.location.href = '/logout';
     }
 });
+
+function delete_btn(){
+    if(confirm(`本当に削除しますか？`)){
+        return true;
+    }else{
+        return false;
+    }
+}
