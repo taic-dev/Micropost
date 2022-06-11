@@ -33,6 +33,7 @@ router.post('/',[
                 password: password
             },
         })
+        // 早期return 
     }else{
         const sql = `SELECT id , name , email FROM users WHERE email='${mail}' AND password='${password}'`;
         connection.query(sql,function(err,result,fields){

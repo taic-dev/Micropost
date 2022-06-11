@@ -1,37 +1,30 @@
 const express = require('express');
 const router = express.Router();
 const connection = require('../db/connection');
+const query = require('../db/query');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/',(req, res, next) => {
   if(req.session.username){
     const user_id = req.session.user_id;
     const username = req.session.username;
     const isAuth = Boolean(user_id);
-    const sql = `SELECT * FROM microposts WHERE delete_flag = 0`;
-    connection.query(sql,function(err,result,fields) {
-    if(err) throw err;
-      console.log("result"+result);
+    connection.query(query.getAllPost,(err,result,fields) => {
       res.render('top',{
         microposts: result,
         username: username,
         isAuth: isAuth
       });
     });
-  }else{
-    res.redirect('/');
+    return;
   }
+  res.redirect('/');
 });
 
-router.post('/',function(req, res, next) {
+router.post('/',(req, res, next) => {
   const user_id = req.session.user_id;
   const username = req.body.username;
   const text = req.body.text;
-  console.log('id'+user_id);
-  const sql = `INSERT INTO microposts (message,user_id,username) VALUES ('${text}','${user_id}','${username}')`;
-  
-  connection.query(sql,function(err,result,fields) {
-    if(err) throw err;
+  connection.query(query.addPost(text,user_id,username),(err,result,fields) => {
     res.redirect('/top');
   })
 });
