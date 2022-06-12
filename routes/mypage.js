@@ -1,13 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const connection = require('../db/connection');
+const query = require('../db/query');
 const { check, validationResult } = require('express-validator');
 
-router.get('/',function(req,res,next){
+router.get('/',(req,res,next)=>{
     const session_username = req.session.username;
-    const sql = `SELECT name,email,password FROM users WHERE name = '${session_username}'`;
-    connection.query(sql,function(err,result,fields){
-        console.log(result);
+    connection.query(query.getUserInfoMypage(session_username),(err,result,fields)=>{
         res.render('mypage',{
             isAuth: true,
             errors: '',
@@ -29,7 +28,7 @@ router.post('/',[
         if(req.body.password !== req.body.password_confirmation){throw new Error('パスワードが一致していません');}
         return true;
     })
-],function(req,res,next){
+],(req,res,next)=>{
     const errors = validationResult(req);
     const session_id = req.session.user_id;
     const session_username = req.session.username;
@@ -51,137 +50,60 @@ router.post('/',[
                 password: password,
             },
         });
-    }else{
+        return;
+    }
 
-        if(session_username == username && session_mail == mail){
-            const sql = `UPDATE users SET password='${password}' WHERE id='${session_id}'`;
-            connection.query(sql,function(err,result,fields){
-                console.log('err:' + err);
-                console.log('result:' + result);
-                req.session.username = username;
-                req.session.mail = mail;
-
+    if(session_mail !== mail){
+        connection.query(query.getEmail(mail),function(err,result,fields){
+            if(result[0] !== undefined){
                 res.render('mypage',{
                     isAuth: true,
                     errors: '',
-                    message: '変更が完了しました',
+                    message: '既に使用されているメールアドレスです。',
                     form: {
                         username: username,
                         mail: mail,
                         password: password
                     }
-                })
-            });
-        }else if(session_username == username){
-            const sql = `SELECT * FROM users WHERE email='${mail}'`;
-            connection.query(sql,function(err,result,fields){
-                console.log('err:' + err);
-                if(result[0] !== undefined){
-                    res.render('mypage',{
-                        isAuth: true,
-                        errors: '',
-                        message: '既に使用されているメールアドレスです。',
-                        form: {
-                            username: username,
-                            mail: mail,
-                            password: password
-                    }
-                    });
-                }else{
-                    const sql = `UPDATE users SET name='${username}',email='${mail}',password='${password}' WHERE id='${session_id}'`;
-                    connection.query(sql,function(err,result,fields){
-                        console.log(result);
-
-                        req.session.username = username;
-                        req.session.mail = mail;
-
-                        res.render('mypage',{
-                            isAuth: true,
-                            errors: '',
-                            message: '変更が完了しました',
-                            form: {
-                                username: username,
-                                mail: mail,
-                                password: password
-                            }
-                        });
-                    })
-                }
-            });
-        }else if(session_mail == mail){
-            const sql = `SELECT * FROM users WHERE name='${username}'`;
-            connection.query(sql,function(err,result,fields){
-                console.log('err:' + err);
-                console.log('result:' + result);
-                if(result[0] !== undefined){
-                    res.render('mypage',{
-                        isAuth: true,
-                        errors: '',
-                        message: '既に使用されているユーザー名です。',
-                        form: {
-                            username: username,
-                            mail: mail,
-                            password: password
-                    }
-                    });
-                }else{
-                    const sql = `UPDATE users SET name='${username}',email='${mail}',password='${password}' WHERE id='${session_id}'`;
-                    connection.query(sql,function(err,result,fields){
-                        console.log(result);
-
-                        req.session.username = username;
-                        req.session.mail = mail;
-
-                        res.render('mypage',{
-                            isAuth: true,
-                            errors: '',
-                            message: '変更が完了しました',
-                            form: {
-                                username: username,
-                                mail: mail,
-                                password: password
-                            }
-                        });
-                    })
-                }
-            });
-        }else{
-            const sql = `SELECT * FROM users WHERE name='${username}' OR email='${mail}'`;
-            connection.query(sql,function(err,result,fields){
-                if(result[0] !== undefined){
-                    res.render('mypage',{
-                        isAuth: true,
-                        errors: '',
-                        message: '既に使用されている情報です',
-                        form: {
-                            username: username,
-                            mail: mail,
-                            password: password
-                    }
-                    });
-                }else{
-                    const sql = `UPDATE users SET name='${username}',email='${mail}',password='${password}' WHERE id='${session_id}'`;
-                    connection.query(sql,function(err,result,fields){
-                        console.log(result);
-
-                        req.session.username = username;
-                        req.session.mail = mail;
-
-                        res.render('mypage',{
-                            isAuth: true,
-                            errors: '',
-                            message: '変更が完了しました',
-                            form: {
-                                username: username,
-                                mail: mail,
-                                password: password
-                            }
-                        });
-                    })
-                }
-            });
-        }
+                });
+                return;
+            }
+        });
     }
+
+    if(session_username !== username){
+        connection.query(query.getUsername(username),(err,result,fields)=>{
+            if(result[0] !== undefined){
+                res.render('mypage',{
+                    isAuth: true,
+                    errors: '',
+                    message: '既に使用されているユーザー名です。',
+                    form: {
+                        username: username,
+                        mail: mail,
+                        password: password
+                    }
+                });
+                return;
+            }
+        });
+    }
+
+    connection.query(query.updateUserInfo(username,mail,password,session_id),function(err,result,fields){
+        req.session.username = username;
+        req.session.mail = mail;
+
+        res.render('mypage',{
+            isAuth: true,
+            errors: '',
+            message: '変更が完了しました',
+            form: {
+                username: username,
+                mail: mail,
+                password: password
+            }
+        });
+    })
 });
 
 module.exports = router;
