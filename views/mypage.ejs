@@ -8,7 +8,28 @@
         </section>
     </aside>
     <main class="mypage-main">
-        <form action="/mypage" method="post" class="mypage-detail">
+        <div class="form-group">
+            <label for="">ユーザー名</label>
+            <input type="text" value="<%= form.username %>" disabled="disabled">
+        </div>
+        <div class="form-group">
+            <label for="">メールアドレス</label>
+            <input type="text" value="<%= form.mail %>" disabled="disabled">
+            
+        </div>
+        <div class="form-group">
+            <label for="">パスワード</label>
+            <input type="password" value="<%= form.password %>" disabled="disabled">
+        </div>
+        <button class="edit-btn">edit</button>
+    </main>
+
+    <dialog class="mypage-detail">
+        <form action="/mypage" method="post">
+            <span class="close-btn"><i class="fa-solid fa-xmark fa-lg"></i></span>
+            <div class="form-group">
+                <img src="images/user-icon.png" alt="user-icon">
+            </div>
             <% if(message){ %>
                 <span class="success-message"><%= message %></span>
             <% } %>
@@ -51,6 +72,6 @@
             </div>
             <input type="submit" value="Change!!" class="change-btn">
         </form>
-    </main>
+    </dialog>
 </section>
 <script src="javascripts/index.js"></script>

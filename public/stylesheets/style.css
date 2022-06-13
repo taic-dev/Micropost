@@ -86,7 +86,7 @@ main{
   justify-content: center;
 }
 
-.top-btn li a,.login-btn,.signup-btn,.change-btn{
+.top-btn li a,.login-btn,.signup-btn,.change-btn,.edit-btn{
   color: var(--main-text-color);
   background: var(--main-bg-color);
   margin: 20px;
@@ -120,7 +120,8 @@ main{
   left: 5px;
 }
 
-.form-group input{
+.form-group input,
+.form-group p{
   width: 100%;
   height: 40px;
   text-align: left;
@@ -268,16 +269,50 @@ main{
   border-radius: 50%;
 }
 
-.post-score{
-  margin-top: 50px;
+.mypage-detail{
+  text-align: center;
+  width: 100vw;
+  min-height: calc(100vh - 60px);
+  margin-top: 60px;
+  background: rgba(0,0,0,0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-.post-score p:first-child{
-  font-size: 40px; 
-  font-weight: bold;
-  margin-bottom: 5px;
+.mypage-detail form{
+  position: relative;
+  width: 540px;
+  margin: auto;
+  padding: 0 30px;
+  background: #fff;
 }
-.post-score p:last-child{font-size: 12px;}
+
+.close-btn{
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  z-index: 1;
+  border-radius: 15px;
+  background: #000;
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  color: #fff;
+}
+
+.close-btn::after{
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: red;
+}
+
 
 .footer{
   text-align: center;

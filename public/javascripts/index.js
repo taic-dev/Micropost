@@ -14,3 +14,11 @@ function delete_btn(){
         return false;
     }
 }
+
+//* Modal *//
+const editBtn = document.querySelector('.edit-btn');
+const closeBtn = document.querySelector('.close-btn');
+const dialog = document.querySelector('.mypage-detail');
+
+editBtn.addEventListener('click',()=>{dialog.show();});
+closeBtn.addEventListener('click',()=>{dialog.close();});
