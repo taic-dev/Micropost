@@ -1,25 +1,16 @@
 const express = require('express');
 const app = require('../app');
 const router = express.Router();
+const loginController = require('../controllers/login');
 const connection = require('../db/connection');
 const query = require('../db/query');
 const { check, validationResult } = require('express-validator');
+const validationList = require('../validation/validationList');
 
-router.get('/',(req,res,next)=>{
-    res.render('login',{
-        isAuth: false,
-        errors: '',
-        form: {
-            mail: '',
-            password: ''
-        },
-    });
-});
 
-router.post('/',[
-    check('mail','メールアドレスを記入してください').isEmail().escape(),
-    check('password','パスワードを記入してください').notEmpty().escape()
-],(req,res,next) => {
+router.get('/',loginController.showLogin);
+
+router.post('/',validationList.login,(req,res,next) => {
     const errors = validationResult(req);
     const mail = req.body.mail;
     const password = req.body.password;
