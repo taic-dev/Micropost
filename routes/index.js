@@ -41,6 +41,12 @@ router.get('/top', topController.showTop);
 router.post('/top',topController.addPost);
 
 /************************
+ * Delete routing
+************************/
+
+router.post('/delete',topController.deletePost);
+
+/************************
  * Logout routing
 ************************/
 

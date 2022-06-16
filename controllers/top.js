@@ -35,6 +35,17 @@ const topController = {
         }).then(result => {
             res.redirect('/top');
         });
+    },
+    deletePost: (req,res,next)=>{
+        const username = req.session.username;
+        const micropost_id = req.body.micropost_id;
+
+        db.Microposts.update(
+            { delete_flag: 1 },
+            { where: { id: micropost_id} }
+        ).then(result => {
+            res.redirect('/top');
+        });
     }
 }
 

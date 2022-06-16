@@ -8,7 +8,6 @@ const session = require('express-session');
 const app = express();
 
 const indexRouter = require('./routes');
-const deleteRouter = require('./routes/delete');
 const mypageRouter = require('./routes/mypage');
 
 // view engine setup
@@ -32,7 +31,6 @@ const session_opt = {
 app.use(session(session_opt));
 
 app.use('/', indexRouter);
-app.use('/delete', deleteRouter);
 app.use('/mypage', mypageRouter);
 
 
