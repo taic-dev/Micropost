@@ -10,8 +10,7 @@ const app = express();
 const indexRouter = require('./routes');
 const topRouter = require('./routes/top');
 const deleteRouter = require('./routes/delete');
-const loginRouter = require('./routes/login');
-const signupRouter = require('./routes/signup');
+
 const mypageRouter = require('./routes/mypage');
 
 // view engine setup
@@ -37,8 +36,6 @@ app.use(session(session_opt));
 app.use('/', indexRouter);
 app.use('/top', topRouter);
 app.use('/delete', deleteRouter);
-app.use('/login', loginRouter);
-app.use('/signup', signupRouter);
 app.use('/mypage', mypageRouter);
 app.get('/logout',(req,res)=>{
   req.session.destroy((err)=>{
