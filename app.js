@@ -10,7 +10,6 @@ const app = express();
 const indexRouter = require('./routes');
 const topRouter = require('./routes/top');
 const deleteRouter = require('./routes/delete');
-
 const mypageRouter = require('./routes/mypage');
 
 // view engine setup

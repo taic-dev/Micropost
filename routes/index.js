@@ -3,12 +3,14 @@ const router = express.Router();
 
 const indexController = require('../controllers/index');
 const loginController = require('../controllers/login');
-const signupController = require('../controllers/signup')
+const signupController = require('../controllers/signup');
+const topController = require('../controllers/top');
+
 const db = require('../models/');
 const validationList = require('../validation/validationList');
 
 /************************
- * index routing
+ * Index routing
 ************************/
 
 router.get('/',indexController.showIndex);
@@ -28,6 +30,14 @@ router.post('/login',validationList.login,loginController.doLogin);
 router.get('/signup', signupController.showSignup);
 
 router.post('/signup',validationList.signup,signupController.doSignup);
+
+/************************
+ * Top routing
+************************/
+
+router.get('/top', topController.showTop);
+
+router.post('/top',topController.addPost);
 
 
 module.exports = router;

@@ -47,8 +47,6 @@ const signupController = {
                 ] 
             }
         }).then(result => {
-
-
             if(result[0] !== undefined){
                 if(result[0].name == username){
                     errors_arr.push ({
