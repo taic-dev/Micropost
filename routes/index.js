@@ -6,6 +6,8 @@ const loginController = require('../controllers/login');
 const signupController = require('../controllers/signup');
 const logoutController = require('../controllers/logout');
 const topController = require('../controllers/top');
+const profileController = require('../controllers/profile');
+const editController = require('../controllers/edit');
 
 const db = require('../models/');
 const validationList = require('../validation/validationList');
@@ -52,6 +54,16 @@ router.post('/delete',topController.deletePost);
 
 router.get('/logout',logoutController.doLogout);
 
+/************************
+ * Profile routing
+************************/
 
+router.get('/profile',profileController.showProfile);
+
+/************************
+ * Edit routing
+************************/
+
+router.get('/edit',editController.showEdit);
 
 module.exports = router;

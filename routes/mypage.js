@@ -4,21 +4,6 @@ const connection = require('../db/connection');
 const query = require('../db/query');
 const { check, validationResult } = require('express-validator');
 
-router.get('/',(req,res,next)=>{
-    const session_username = req.session.username;
-    connection.query(query.getUserInfoMypage(session_username),(err,result,fields)=>{
-        res.render('mypage',{
-            isAuth: true,
-            errors: '',
-            message: '',
-            form: {
-                username: result[0].name,
-                mail: result[0].email,
-                password: result[0].password
-            }
-        });
-    });
-});
 
 router.post('/',[
     check('username','ユーザー名記入してください').notEmpty().escape(),

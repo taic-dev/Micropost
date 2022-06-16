@@ -3,7 +3,7 @@ const indexController = {
         res.render('index',{
             isAuth: false
         });
-    }
+    },
 }
 
 module.exports = indexController;

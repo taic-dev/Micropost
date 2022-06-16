@@ -8,7 +8,6 @@ const session = require('express-session');
 const app = express();
 
 const indexRouter = require('./routes');
-const mypageRouter = require('./routes/mypage');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,7 +30,6 @@ const session_opt = {
 app.use(session(session_opt));
 
 app.use('/', indexRouter);
-app.use('/mypage', mypageRouter);
 
 
 // catch 404 and forward to error handler
