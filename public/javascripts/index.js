@@ -1,3 +1,7 @@
+/************************
+ * Logout JavaScript
+************************/
+
 const logout = document.querySelector('#logout');
 
 logout.addEventListener('click',(e)=>{
@@ -15,7 +19,10 @@ function delete_btn(){
     }
 }
 
-//* Modal *//
+/************************
+ * Modal JavaScript
+************************/
+
 const editBtn = document.querySelector('.edit-btn');
 const closeBtn = document.querySelector('.close-btn');
 const dialog = document.querySelector('.mypage-detail');

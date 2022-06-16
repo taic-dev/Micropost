@@ -8,7 +8,6 @@ const session = require('express-session');
 const app = express();
 
 const indexRouter = require('./routes');
-const topRouter = require('./routes/top');
 const deleteRouter = require('./routes/delete');
 const mypageRouter = require('./routes/mypage');
 
@@ -33,14 +32,9 @@ const session_opt = {
 app.use(session(session_opt));
 
 app.use('/', indexRouter);
-app.use('/top', topRouter);
 app.use('/delete', deleteRouter);
 app.use('/mypage', mypageRouter);
-app.get('/logout',(req,res)=>{
-  req.session.destroy((err)=>{
-    res.redirect('/');
-  });
-});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
