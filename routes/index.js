@@ -60,6 +60,8 @@ router.get('/logout',logoutController.doLogout);
 
 router.get('/profile',profileController.showProfile);
 
+router.get('/profile/:userName',profileController.showProfile);
+
 /************************
  * Edit routing
 ************************/

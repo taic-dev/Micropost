@@ -3,15 +3,15 @@ const db = require('../models');
 const profileController = {
     showProfile: (req,res,next)=>{
         const session_username = req.session.username;
-
-        // `SELECT name,email,password FROM users WHERE name = '${session_username}'
+        const userName = req.params;
+        console.log(userName);
 
         db.User.findAll({
             where: {
                 name: session_username
             }
         }).then(result => {
-            res.render('mypage',{
+            res.render('profile',{
                 isAuth: true,
                 errors: '',
                 message: '',
