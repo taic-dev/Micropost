@@ -1,7 +1,56 @@
 <%- include('./header') %>
 <main class="edit-main">
     <section class="edit">
-        <h1>EDIT</h1>
+        <div class="common-title">
+            <h2>編集ページ</h2>
+        </div>
+        <div class="edit-form__delete">
+            <a href="/delete" class="delete-btn">アカウント削除</a>
+        </div>
+        <form action="/edit" method="post" enctype="multipart/form-data" class="edit-form">
+            <ul class="edit-form__list">
+                <li class="edit-form__item">
+                    <div class="edit-form__img">
+                        <img src="../images/user-icon.png" alt="ユーザアイコン" id="image">
+                        <input type="file" id="file-change">
+                    </div>
+                </li>
+                <li class="edit-form__item">
+                    <div class="edit-from__group">
+                        <label for="username">
+                            ユーザ名
+                            <span></span>
+                        </label>
+                        <input type="text" name="username" id="username" value="<%= form.username %>">
+                    </div>
+                    <div class="edit-from__group">
+                        <label for="username">
+                            メールアドレス
+                            <span></span>
+                        </label>
+                        <input type="mail" name="mail" id="mail" value="<%= form.mail %>">
+                    </div>
+                    <div class="edit-from__group">
+                        <label for="password">
+                            パスワード
+                            <span></span>
+                        </label>
+                        <input type="password" name="password" id="password" value="<%= form.password %>">
+                    </div>
+                    <div class="edit-from__group">
+                        <label for="password_confirmation">
+                            パスワード確認
+                            <span></span>
+                        </label>
+                        <input type="password" name="password_confirmation" id="password_confirmation"  value="<%= form.password %>">
+                    </div>
+                </li>
+            </ul>
+            <div class="edit-from__btn">
+                <input type="submit" value="edit" class="edit-btn">
+            </div>
+        </form>
     </section>
 </main>
+<script src="../javascripts/index.js"></script>
 <%- include('./footer') %>

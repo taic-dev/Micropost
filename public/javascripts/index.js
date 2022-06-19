@@ -27,5 +27,17 @@ const editBtn = document.querySelector('.edit-btn');
 const closeBtn = document.querySelector('.close-btn');
 const dialog = document.querySelector('.mypage-detail');
 
-editBtn.addEventListener('click',()=>{dialog.show();});
-closeBtn.addEventListener('click',()=>{dialog.close();});
+// editBtn.addEventListener('click',()=>{dialog.show();});
+// closeBtn.addEventListener('click',()=>{dialog.close();});
+
+/************************
+ * Image change  JavaScript
+************************/
+const fileChange = document.getElementById("file-change");
+const image = document.getElementById("image");
+fileChange.addEventListener('change',(e)=>{
+    // console.log(url)
+    const url = e.target.files[0];
+    console.log(url)
+    image.setAttribute('src',URL.createObjectURL(url));
+});

@@ -23,6 +23,7 @@ main{
   margin-top: 60px;
 }
 
+/* common */
 .success-message{
   display: block;
   margin: 10px 0;
@@ -40,6 +41,16 @@ main{
   color: var(--message-error);
   background: var(--bg-error);
 }
+
+.common-title h2{
+  text-align: center;
+  margin: 100px 0;
+
+  font-size: 25px;
+  font-weight: bold;
+}
+
+/* header */
 
 .header{
   height: 60px;
@@ -86,7 +97,7 @@ main{
   justify-content: center;
 }
 
-.top-btn li a,.login-btn,.signup-btn,.change-btn,.edit-btn{
+.top-btn li a,.login-btn,.signup-btn,.change-btn,.edit-btn,.delete-btn{
   color: var(--main-text-color);
   background: var(--main-bg-color);
   margin: 20px;
@@ -139,6 +150,8 @@ main{
   padding: 10px 0;
   font-size: 12px;
 }
+
+/* top */
 
 .wrapper{
   display: flex;
@@ -248,6 +261,90 @@ main{
   font-size: 10px;
 }
 
+/* edit */
+.edit{
+  max-width: 1000px;
+  margin: auto;
+}
+
+.edit-form__delete{
+  font-size: 13px;
+  text-align: right;
+  margin-bottom: 50px;
+}
+
+.delete-btn{
+  margin-right: 0;
+}
+
+.edit-form__list{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.edit-form__item{
+  width: 50%;
+}
+
+.edit-form__item:last-child{
+  border: solid 1px #808080;
+}
+
+.edit-form__img{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.edit-form__img img{
+  width: 190px;
+  border: dotted;
+}
+
+.edit-from__group{
+  position: relative;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: solid 1px #808080;
+}
+
+.edit-from__group label{
+  width: 30%;
+  height: 100%;
+  background: #f5f5f5;
+  padding-left: 10px;
+
+  font-size: 13px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  border-right: solid 1px #808080;
+}
+
+.edit-from__group input{
+  display: block;
+  width: 70%;
+  height: 100%;
+  padding-left: 10px;
+  outline: none;
+}
+
+.edit-from__group span{
+  position: absolute;
+  bottom: 5px;
+  color: var(--message-error);
+}
+
+.edit-from__btn{
+  text-align: center;
+}
+
 /* mypage */
 .mypage-main{
   width: 50%;
@@ -323,10 +420,29 @@ main{
 
 
 @media screen and (max-width:900px) {
-  .wrapper{
+  .wrapper,.edit{
     display: block;
     max-width: 540px;
   }
   .sidebar,.micropost-main{width: auto;}
   .mypage-main,.mypage-sidebar{width: 100%;}
+
+  /* edit */
+  .edit-form__list{
+    display: block;
+  }
+
+  .edit-from__group{
+    height: 60px;
+  }
+
+  .edit-form__item{
+    width: 100%;
+  }
+  .edit-form__item:last-child{
+    margin-top: 50px;
+  }
+  .edit-form__img img{
+    margin-bottom: 20px;
+  }
 }
