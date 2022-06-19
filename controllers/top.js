@@ -1,6 +1,7 @@
 const db = require("../models");
 
 const topController = {
+
     showTop: (req, res, next) => {
         if(req.session.username){
             const user_id = req.session.user_id;
@@ -22,6 +23,7 @@ const topController = {
         }
         res.redirect('/');
     },
+
     addPost: (req, res, next) => {
         const user_id = req.session.user_id;
         const username = req.body.username;
@@ -36,6 +38,7 @@ const topController = {
             res.redirect('/top');
         });
     },
+    
     deletePost: (req,res,next)=>{
         const username = req.session.username;
         const micropost_id = req.body.micropost_id;

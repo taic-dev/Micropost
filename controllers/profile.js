@@ -1,6 +1,7 @@
 const db = require('../models');
 
 const profileController = {
+    
     showProfile: (req,res,next)=>{
         const session_username = req.session.username;
         const userName = req.params;

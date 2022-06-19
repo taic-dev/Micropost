@@ -10,7 +10,8 @@ const profileController = require('../controllers/profile');
 const editController = require('../controllers/edit');
 
 const db = require('../models/');
-const validationList = require('../validation/validationList');
+const validationList = require('../controllers/validationList');
+const errorController = require('../controllers/error');
 
 /************************
  * Index routing
@@ -60,7 +61,7 @@ router.get('/logout',logoutController.doLogout);
 
 router.get('/profile',profileController.showProfile);
 
-router.get('/profile/:userName',profileController.showProfile);
+router.get('/profile/:userName',errorController.issetUser,profileController.showProfile);
 
 /************************
  * Edit routing
