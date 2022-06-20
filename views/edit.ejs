@@ -19,21 +19,39 @@
                     <div class="edit-from__group">
                         <label for="username">
                             ユーザ名
-                            <span></span>
+                            <% if(errors){ %>
+                                <% errors.find(obj=>{ %>
+                                    <% if(obj.param == 'username'){ %>
+                                        <span><%= obj.msg %></span>
+                                    <% } %>
+                                <% }); %>
+                            <% } %>
                         </label>
                         <input type="text" name="username" id="username" value="<%= form.username %>">
                     </div>
                     <div class="edit-from__group">
                         <label for="username">
                             メールアドレス
-                            <span></span>
+                            <% if(errors){ %>
+                                <% errors.find(obj=>{ %>
+                                    <% if(obj.param == 'mail'){ %>
+                                        <span><%= obj.msg %></span>
+                                    <% } %>
+                                <% }); %>
+                            <% } %>
                         </label>
                         <input type="mail" name="mail" id="mail" value="<%= form.mail %>">
                     </div>
                     <div class="edit-from__group">
                         <label for="password">
                             パスワード
-                            <span></span>
+                            <% if(errors){ %>
+                                <% errors.find(obj=>{ %>
+                                    <% if(obj.param == 'password'){ %>
+                                        <span><%= obj.msg %></span>
+                                    <% } %>
+                                <% }); %>
+                            <% } %>
                         </label>
                         <input type="password" name="password" id="password" value="<%= form.password %>">
                     </div>
@@ -42,7 +60,7 @@
                             パスワード確認
                             <span></span>
                         </label>
-                        <input type="password" name="password_confirmation" id="password_confirmation"  value="<%= form.password %>">
+                        <input type="password" name="password_confirmation" id="password_confirmation">
                     </div>
                 </li>
             </ul>

@@ -337,6 +337,7 @@ main{
 
 .edit-from__group span{
   position: absolute;
+  left: 50%;
   bottom: 5px;
   color: var(--message-error);
 }

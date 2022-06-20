@@ -9,9 +9,27 @@ const topController = require('../controllers/top');
 const profileController = require('../controllers/profile');
 const editController = require('../controllers/edit');
 
+/************************
+ * Models
+************************/
 const db = require('../models/');
 const validationList = require('../controllers/validationList');
 const errorController = require('../controllers/error');
+
+/************************
+ * Image upload
+************************/
+const multer = require('multer');
+const { changeProfile } = require('../controllers/edit');
+const storage = multer.diskStorage({
+    destination: (req,file,cd)=>{
+        cd(null,'../public/uploads/');
+    },
+    filename: (req,file,cd)=>{
+        cd(null,file.originalname);
+    }
+});
+const upload = multer({storage: storage});
 
 /************************
  * Index routing
@@ -67,6 +85,14 @@ router.get('/profile/:userName',errorController.issetUser,profileController.show
  * Edit routing
 ************************/
 
-router.get('/edit',editController.showEdit);
+router.get('/edit',editController.showEditPage);
+
+router.post(
+    '/edit',
+    upload.single('file'), 
+    validationList.signup, 
+    editController.judgeProfile,
+    editController.changeProfile
+);
 
 module.exports = router;

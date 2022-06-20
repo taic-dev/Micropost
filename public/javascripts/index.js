@@ -36,8 +36,6 @@ const dialog = document.querySelector('.mypage-detail');
 const fileChange = document.getElementById("file-change");
 const image = document.getElementById("image");
 fileChange.addEventListener('change',(e)=>{
-    // console.log(url)
     const url = e.target.files[0];
-    console.log(url)
     image.setAttribute('src',URL.createObjectURL(url));
 });
