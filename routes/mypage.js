@@ -16,41 +16,9 @@ router.post('/',[
 ],(req,res,next)=>{
     
 
-    if(session_mail !== mail){
-        connection.query(query.getEmail(mail),function(err,result,fields){
-            if(result[0] !== undefined){
-                res.render('mypage',{
-                    isAuth: true,
-                    errors: '',
-                    message: '既に使用されているメールアドレスです。',
-                    form: {
-                        username: username,
-                        mail: mail,
-                        password: password
-                    }
-                });
-                return;
-            }
-        });
-    }
+    
 
-    if(session_username !== username){
-        connection.query(query.getUsername(username),(err,result,fields)=>{
-            if(result[0] !== undefined){
-                res.render('mypage',{
-                    isAuth: true,
-                    errors: '',
-                    message: '既に使用されているユーザー名です。',
-                    form: {
-                        username: username,
-                        mail: mail,
-                        password: password
-                    }
-                });
-                return;
-            }
-        });
-    }
+    
 
     connection.query(query.updateUserInfo(username,mail,password,session_id),function(err,result,fields){
         req.session.username = username;
