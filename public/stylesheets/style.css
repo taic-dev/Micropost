@@ -142,6 +142,16 @@ main{
   border-radius: 5px;
 }
 
+.form-group input[type="file"]{
+  border: unset;
+}
+
+.form-group img{
+  width: 200px;
+  height: auto;
+  border: dotted 1px #000;
+}
+
 .login-form span, .signup-form span{
   display: block;
   color: red;

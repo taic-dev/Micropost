@@ -21,6 +21,11 @@ const signupController = {
         const mail = req.body.mail;
         const password = req.body.password;
         const password_confirmation = req.body.password_confirmation;
+        const iconImage = req.file;
+
+        console.log(req.body);
+        console.log(iconImage);
+        return;
     
         if(!errors.isEmpty()){
             const errors_arr = errors.array();

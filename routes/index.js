@@ -20,10 +20,11 @@ const errorController = require('../controllers/error');
  * Image upload
 ************************/
 const multer = require('multer');
-const { changeProfile } = require('../controllers/edit');
+// const { doSignup } = require('../controllers/signup');
+// const { changeProfile } = require('../controllers/edit');
 const storage = multer.diskStorage({
     destination: (req,file,cd)=>{
-        cd(null,'../public/uploads/');
+        cd(null,'public/uploads/');
     },
     filename: (req,file,cd)=>{
         cd(null,file.originalname);
@@ -51,7 +52,12 @@ router.post('/login',validationList.login,loginController.doLogin);
 
 router.get('/signup', signupController.showSignup);
 
-router.post('/signup',validationList.signup,signupController.doSignup);
+router.post(
+    '/signup',
+    upload.single('file'), 
+    validationList.signup,
+    signupController.doSignup
+);
 
 /************************
  * Top routing
