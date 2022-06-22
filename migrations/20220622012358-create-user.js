@@ -9,13 +9,21 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true
       },
       email: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true
       },
       password: {
         type: Sequelize.STRING
+      },
+      img: {
+        type: Sequelize.STRING
+      },
+      delete_flag: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,

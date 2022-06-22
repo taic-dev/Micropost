@@ -47,70 +47,67 @@ const editController = {
         }
 
         if(session_mail !== mail){
-            await db.User.findAll({
+            const result = await db.User.findAll({
                 where: {
                     email: mail
                 }
-            }).then(result => {
-                if(result[0] !== undefined){
-                    
-                    errors_arr.push({
-                        value: mail,
-                        msg: '既に使用されているメールアドレスです。',
-                        param: 'mail',
-                        location: 'body'
-                    });
-                    
-                    res.render('edit',{
-                        isAuth: true,
-                        errors: errors_arr,
-                        message: "",
-                        form: {
-                            username: username,
-                            mail: mail,
-                            password: password
-                        }
-                    });
-                    return false;
-                }
             });
+            
+            if(result[0] !== undefined) {
+                errors_arr.push({
+                    value: mail,
+                    msg: '既に使用されているメールアドレスです。',
+                    param: 'mail',
+                    location: 'body'
+                });
+                
+                res.render('edit',{
+                    isAuth: true,
+                    errors: errors_arr,
+                    message: "",
+                    form: {
+                        username: username,
+                        mail: mail,
+                        password: password
+                    }
+                });
+                return false;
+            }
+                
         }
 
         if(session_username !== username){
-            await db.User.findAll({
+            const result = await db.User.findAll({
                 where: {
                     name: username
                 }
-            }).then(result => {
-                if(result[0] !== undefined){
-    
-                    errors_arr.push({
-                        value: username,
-                        msg: '既に使用されているユーザー名です。',
-                        param: 'username',
-                        location: 'body'
-                    });
-    
-                    res.render('edit',{
-                        isAuth: true,
-                        errors: errors_arr,
-                        message: "",
-                        form: {
-                            username: username,
-                            mail: mail,
-                            password: password
-                        }
-                    });
-                    return false;
-                }
             });
+
+            if(result[0] !== undefined) {
+                errors_arr.push({
+                    value: username,
+                    msg: '既に使用されているユーザー名です。',
+                    param: 'username',
+                    location: 'body'
+                });
+    
+                res.render('edit',{
+                    isAuth: true,
+                    errors: errors_arr,
+                    message: "",
+                    form: {
+                        username: username,
+                        mail: mail,
+                        password: password
+                    }
+                });
+                return false;
+            }
         }
         next();
     },
     
     changeProfile: (req,res,next)=>{
-        console.log("//////////////////////////////////////////////success////////////////////////////////////////////////////");
-        
         const session_id = req.session.user_id;
         const username = req.body.username;
         const mail = req.body.mail;
