@@ -20,8 +20,6 @@ const errorController = require('../controllers/error');
  * Image upload
 ************************/
 const multer = require('multer');
-// const { doSignup } = require('../controllers/signup');
-// const { changeProfile } = require('../controllers/edit');
 const storage = multer.diskStorage({
     destination: (req,file,cd)=>{
         cd(null,'public/uploads/');
@@ -56,6 +54,7 @@ router.post(
     '/signup',
     upload.single('file'), 
     validationList.signup,
+    signupController.judgeSignup,
     signupController.doSignup
 );
 
