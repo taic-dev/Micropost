@@ -2,14 +2,17 @@ const db = require("../models");
 const { check, validationResult } = require('express-validator');
 
 const editController = {
-    showEditPage: (req,res,next)=>{
+    showEditPage: async (req,res,next)=>{
         const session_username = req.session.username;
 
-        db.User.findAll({
+        const result = await db.User.findAll({
             where: {
                 name: session_username
             }
-        }).then(result => {
+        });
+
+        if(result[0] !==undefined){
+            req.session.img = result[0].img;
             res.render('edit',{
                 isAuth: true,
                 errors: '',
@@ -17,10 +20,11 @@ const editController = {
                 form: {
                     username: result[0].name,
                     mail: result[0].email,
-                    password: result[0].password
+                    password: result[0].password,
+                    img: result[0].img
                 }
             });
-        });
+        }
     },
     
     judgeProfile: async (req,res,next)=>{
@@ -32,6 +36,14 @@ const editController = {
         const mail = req.body.mail;
         const password = req.body.password;
 
+        console.log(req.file);
+
+        if(req.file !== undefined){
+            res.locals.image = req.file.originalname;
+        }else{
+            res.locals.image = req.session.img;
+        }
+
         if(!errors.isEmpty()){
             res.render('edit',{
                 isAuth: false,
@@ -41,6 +53,7 @@ const editController = {
                     username: username,
                     mail: mail,
                     password: password,
+                    img: res.locals.image
                 },
             });
             return;
@@ -68,7 +81,8 @@ const editController = {
                     form: {
                         username: username,
                         mail: mail,
-                        password: password
+                        password: password,
+                        img: res.locals.image
                     }
                 });
                 return false;
@@ -98,12 +112,14 @@ const editController = {
                     form: {
                         username: username,
                         mail: mail,
-                        password: password
+                        password: password,
+                        img: res.locals.image
                     }
                 });
                 return false;
             }
         }
+
         next();
     },
     
@@ -114,7 +130,7 @@ const editController = {
         const password = req.body.password;
 
         db.User.update(
-            { name: username, email: mail, password: password },
+            { name: username, email: mail, password: password, img: res.locals.image },
             { where: {id: session_id}}
         )
         req.session.username = username;
@@ -127,7 +143,8 @@ const editController = {
             form: {
                 username: username,
                 mail: mail,
-                password: password
+                password: password,
+                img: res.locals.image
             }
         });
     }
