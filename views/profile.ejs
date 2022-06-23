@@ -1,77 +1,61 @@
 <%- include( './header' ) %>
-<section class="wrapper">
-    <aside class="mypage-sidebar">
-        <section class="mypage-area">
-            <div class="mypage-icon">
-                <img src="../images/user-icon.png" alt="user-icon">
-            </div>
-        </section>
-    </aside>
-    <main class="mypage-main">
-        <div class="form-group">
-            <label for="">ユーザー名</label>
-            <input type="text" value="<%= form.username %>" disabled="disabled">
-        </div>
-        <div class="form-group">
-            <label for="">メールアドレス</label>
-            <input type="text" value="<%= form.mail %>" disabled="disabled">
-            
-        </div>
-        <div class="form-group">
-            <label for="">パスワード</label>
-            <input type="password" value="<%= form.password %>" disabled="disabled">
-        </div>
-        <button class="edit-btn">edit</button>
-    </main>
-
-    <dialog class="mypage-detail">
-        <form action="/mypage" method="post">
-            <span class="close-btn"><i class="fa-solid fa-xmark fa-lg"></i></span>
-            <div class="form-group">
-                <img src="../images/user-icon.png" alt="user-icon">
-            </div>
-            <% if(message){ %>
-                <span class="success-message"><%= message %></span>
-            <% } %>
-            <div class="form-group">
-                <label for="">ユーザー名</label>
-                <input type="text" value="<%= form.username %>" name="username">
-                <% if(errors){ %>
-                    <% errors.find(obj=>{ %>
-                        <% if(obj.param == 'username'){ %>
-                            <span class="error-message"><%= obj.msg %></span>
+<section class="edit">
+    <div class="common-title">
+        <h2>プロフィール</h2>
+    </div>
+    <div class="edit-form__delete">
+        <a href="/edit" class="">プロフィール編集</a>
+    </div>
+    <form action="/edit" method="post" enctype="multipart/form-data" class="edit-form">
+        <ul class="edit-form__list">
+            <li class="edit-form__item">
+                <div class="edit-form__img">
+                    <img src="../uploads/<%= form.img %>" alt="ユーザアイコン" id="image">
+                </div>
+            </li>
+            <li class="edit-form__item">
+                <div class="edit-from__group">
+                    <label for="username">
+                        ユーザ名
+                        <% if(errors){ %>
+                            <% errors.find(obj=>{ %>
+                                <% if(obj.param == 'username'){ %>
+                                    <span><%= obj.msg %></span>
+                                <% } %>
+                            <% }); %>
                         <% } %>
-                    <% }); %>
-                <% } %>
-            </div>
-            <div class="form-group">
-                <label for="">メールアドレス</label>
-                <input type="text" value="<%= form.mail %>" name="mail">
-                <% if(errors){ %>
-                    <% errors.find(obj=>{ %>
-                        <% if(obj.param == 'mail'){ %>
-                            <span class="error-message"><%= obj.msg %></span>
+                    </label>
+                    <input type="text" name="username" id="username" value="<%= form.username %>" readonly="readonly">
+                </div>
+                <div class="edit-from__group">
+                    <label for="username">
+                        メールアドレス
+                        <% if(errors){ %>
+                            <% errors.find(obj=>{ %>
+                                <% if(obj.param == 'mail'){ %>
+                                    <span><%= obj.msg %></span>
+                                <% } %>
+                            <% }); %>
                         <% } %>
-                    <% }); %>
-                <% } %>
-            </div>
-            <div class="form-group">
-                <label for="">パスワード</label>
-                <input type="password" value="<%= form.password %>" name="password">
-            </div>
-            <div class="form-group">
-                <label for="">パスワード確認</label>
-                <input type="password" value="<%= form.password %>" name="password_confirmation">
-                <% if(errors){ %>
-                    <% errors.find(obj=>{ %>
-                        <% if(obj.param == 'password'){ %>
-                            <span class="error-message"><%= obj.msg %></span>
+                    </label>
+                    <input type="mail" name="mail" id="mail" value="<%= form.mail %>" readonly="readonly">
+                </div>
+                <div class="edit-from__group">
+                    <label for="password">
+                        パスワード
+                        <% if(errors){ %>
+                            <% errors.find(obj=>{ %>
+                                <% if(obj.param == 'password'){ %>
+                                    <span><%= obj.msg %></span>
+                                <% } %>
+                            <% }); %>
                         <% } %>
-                    <% }); %>
-                <% } %>
-            </div>
-            <input type="submit" value="Change!!" class="change-btn">
-        </form>
-    </dialog>
+                    </label>
+                    <input type="password" name="password" id="password" value="<%= form.password %>" readonly="readonly">
+                </div>
+            </li>
+        </ul>
+    </form>
 </section>
+
 <script src="../javascripts/index.js"></script>

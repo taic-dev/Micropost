@@ -19,7 +19,8 @@ const profileController = {
                 form: {
                     username: result[0].name,
                     mail: result[0].email,
-                    password: result[0].password
+                    password: result[0].password,
+                    img: result[0].img
                 }
             });
         });
