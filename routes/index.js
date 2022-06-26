@@ -84,7 +84,11 @@ router.get('/logout',logoutController.doLogout);
 
 router.get('/profile',profileController.showProfile);
 
-router.get('/profile/:userName',errorController.issetUser,profileController.showProfile);
+router.get(
+    '/profile/:userName',
+    errorController.issetUser,
+    profileController.showProfile
+);
 
 /************************
  * Edit routing

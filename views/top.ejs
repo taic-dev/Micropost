@@ -22,9 +22,10 @@
       <section class="archive-area">
         <ul class="archive-list">
           <% microposts.forEach((value)=> { %>
+            <% console.log(value) %>
             <li class="archive-item">
               <div class="archive-item__user">
-                <img src="images/user-icon.png" alt="user-icon">
+                <img src="uploads/<%= value.img %>" alt="user-icon">
                 <p><span><%= value.user_name %></span></p>
               </div>
               <form action="/delete" method="post" class="archive-item__status" onsubmit="return delete_btn()">
