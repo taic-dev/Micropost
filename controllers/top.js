@@ -10,9 +10,9 @@ const topController = {
             const username = req.session.username;
             const isAuth = Boolean(user_id);
 
-            const result = await db.User.findAll({
+            const result = await db.Microposts.findAll({
                 include: [{ 
-                        model: db.Microposts,
+                        model: db.User,
                         required: true
                 }],
                 where: {
@@ -20,7 +20,12 @@ const topController = {
                 }
             });
 
+            // console.log(result);
+            // return;
+            // res.json(result);
+
             const post = valueObject.infMaintenance(result);
+            // return;
 
             res.render('top',{
                 microposts: post,

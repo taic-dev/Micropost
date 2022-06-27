@@ -22,5 +22,11 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Microposts',
   });
+  Microposts.associate = (models) => {
+    Microposts.hasMany(models.User, {
+      foreignKey: 'id',
+      sourceKey: 'user_id'
+    });
+  }
   return Microposts;
 };
