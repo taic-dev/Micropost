@@ -41,6 +41,7 @@ const loginController = {
                 req.session.user_id = result[0].id;
                 req.session.username = result[0].name;
                 req.session.mail = result[0].email;
+                req.session.image = result[0].img;
                 res.redirect('top');
                 return;
             }

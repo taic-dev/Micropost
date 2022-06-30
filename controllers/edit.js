@@ -135,6 +135,7 @@ const editController = {
         )
         req.session.username = username;
         req.session.mail = mail;
+        req.session.image = res.locals.image
 
         res.render('edit',{
             isAuth: true,

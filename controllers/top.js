@@ -8,6 +8,7 @@ const topController = {
         if(req.session.username){
             const user_id = req.session.user_id;
             const username = req.session.username;
+            const img = req.session.image
             const isAuth = Boolean(user_id);
 
             const result = await db.Microposts.findAll({
@@ -17,19 +18,18 @@ const topController = {
                 }],
                 where: {
                     delete_flag: 0
-                }
+                },
+                order: [
+                    ['id', 'DESC']
+                  ]
             });
 
-            // console.log(result);
-            // return;
-            // res.json(result);
-
             const post = valueObject.infMaintenance(result);
-            // return;
 
             res.render('top',{
                 microposts: post,
                 username: username,
+                img: img,
                 isAuth: isAuth
             });
             

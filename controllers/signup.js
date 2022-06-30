@@ -22,8 +22,13 @@ const signupController = {
         const mail = req.body.mail;
         const password = req.body.password;
         const password_confirmation = req.body.password_confirmation;
-        const iconImage = req.file.originalname;
-    
+
+        if(!req.file){
+            res.locals.image = "sample.png";
+        }else{
+            res.locals.image = req.file.originalname;
+        }
+
         if(!errors.isEmpty()){
             const errors_arr = errors.array();
             res.render('signup',{
@@ -77,15 +82,10 @@ const signupController = {
         res.locals.username = username;
         res.locals.mail = mail;
         res.locals.password = password;
-        res.locals.image = iconImage;
         next();
     },
 
     doSignup: async (req,res,next) => {
-
-        if(res.locals.image === undefined){
-            res.locals.image = "sample.png";
-        }
         
         const result = await db.User.create({
             name: res.locals.username,
