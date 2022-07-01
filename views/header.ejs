@@ -14,7 +14,7 @@
 <body>
   <header class="header">
     <div class="title">
-      <h1>truthPost</h1>
+      <h1><a href="/top">truthPost</a></h1>
     </div>
     <nav>
       <ul class="menu">
@@ -22,7 +22,7 @@
         <li class="menu-item"><a href="/signup">Sign up</a></li>
         <li class="menu-item"><a href="/login">Log in</a></li>
         <% }else{ %>
-        <li class="menu-item"><a id="logout" href="">Log out</a></li>
+        <li class="menu-item"><a id="logout" href="#" onclick="return doLogout(this);">Log out</a></li>
         <% } %>
       </ul>
     </nav>

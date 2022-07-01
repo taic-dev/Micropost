@@ -2,40 +2,29 @@
  * Logout JavaScript
 ************************/
 
-// const logout = document.querySelector('#logout');
-
-// logout.addEventListener('click',(e)=>{
-//     e.preventDefault();
-//     if(confirm(`本当にログアウトしますか？`)){
-//         window.location.href = '/logout';
-//     }
-// });
-
-// function delete_btn(){
-//     if(confirm(`本当に削除しますか？`)){
-//         return true;
-//     }else{
-//         return false;
-//     }
-// }
+function doLogout(e){
+    if(confirm(`本当にログアウトしますか？`)){
+        window.location.href = '/logout';
+    }
+}
 
 /************************
- * Modal JavaScript
+ * Post delete  JavaScript
 ************************/
 
-const editBtn = document.querySelector('.edit-btn');
-const closeBtn = document.querySelector('.close-btn');
-const dialog = document.querySelector('.mypage-detail');
-
-// editBtn.addEventListener('click',()=>{dialog.show();});
-// closeBtn.addEventListener('click',()=>{dialog.close();});
+function doDelete(){
+    if(confirm(`本当に削除しますか？`)){
+        return true;
+    }else{
+        return false;
+    }
+}
 
 /************************
  * Image change  JavaScript
 ************************/
-const fileChange = document.getElementById("file-change");
-const image = document.getElementById("image");
-fileChange.addEventListener('change',(e)=>{
-    const url = e.target.files[0];
+function fileChange(e){
+    let image = document.getElementById("image");
+    let url = e.target.files[0];
     image.setAttribute('src',URL.createObjectURL(url));
-});
+}
