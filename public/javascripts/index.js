@@ -2,7 +2,7 @@
  * Logout JavaScript
 ************************/
 
-function doLogout(e){
+function doLogout(){
     if(confirm(`本当にログアウトしますか？`)){
         window.location.href = '/logout';
     }
@@ -11,7 +11,6 @@ function doLogout(e){
 /************************
  * Post delete  JavaScript
 ************************/
-
 function doDelete(){
     if(confirm(`本当に削除しますか？`)){
         return true;

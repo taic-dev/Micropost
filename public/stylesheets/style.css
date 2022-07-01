@@ -68,6 +68,11 @@ main{
   right: 0;
 }
 
+.title a{
+  color: #fff;
+  text-decoration: none;
+}
+
 .menu{display: flex;}
 .menu>*{margin-left: 15px;}
 .menu-item a{color: white; text-decoration: none;}
