@@ -3,7 +3,7 @@
     <aside class="sidebar">
       <section class="user-area">
         <div class="user-icon">
-          <img src="uploads/<%= img %>" alt="user-icon">
+          <a href="/profile/<%= username %>"><img src="uploads/<%= img %>" alt="user-icon"></a>
         </div>
         <div class="user-detail">
             <h2 id="username"><%= username %></h2>
@@ -25,7 +25,7 @@
             <% console.log(value) %>
             <li class="archive-item">
               <div class="archive-item__user">
-                <img src="uploads/<%= value.img %>" alt="user-icon">
+                <a href="/profile/<%= value.user_name %>"><img src="uploads/<%= value.img %>" alt="user-icon"></a>
                 <p><span><%= value.user_name %></span></p>
               </div>
               <form action="/delete" method="post" class="archive-item__status" onsubmit="return doDelete();">

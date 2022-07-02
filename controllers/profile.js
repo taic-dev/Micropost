@@ -3,13 +3,13 @@ const db = require('../models');
 const profileController = {
     
     showProfile: (req,res,next)=>{
-        const session_username = req.session.username;
-        const userName = req.params;
-        console.log(userName);
+        if(!res.locals.userName){
+            res.locals.userName = req.session.username;
+        }
 
         db.User.findAll({
             where: {
-                name: session_username
+                name: res.locals.userName
             }
         }).then(result => {
             res.render('profile',{

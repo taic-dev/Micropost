@@ -1,8 +1,9 @@
+const db = require('../models');
+
 const errorController = {
 
     issetUser: (req,res,next) => {
         const userName = req.params.userName;
-        const session_username = req.session.username;
 
         db.User.findAll({
             where: {
@@ -20,6 +21,8 @@ const errorController = {
                 return
             }
         });
+
+        res.locals.userName = req.params.userName;
 
         next();
     },

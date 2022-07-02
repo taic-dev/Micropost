@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
+/************************
+ * Controllers
+************************/
 const indexController = require('../controllers/index');
 const loginController = require('../controllers/login');
 const signupController = require('../controllers/signup');
