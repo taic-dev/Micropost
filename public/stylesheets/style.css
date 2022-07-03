@@ -159,45 +159,6 @@ body {
 .menu>*{margin-left: 15px;}
 .menu-item a{color: #000; text-decoration: none;}
 
-/* top */
-.top-main,.login-main{
-  position: relative;
-  height: calc(100vh - 60px);
-}
-
-.top-fv,.login-fv{
-  width: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateY(-50%) translateX(-50%); 
-  text-align: center;
-}
-
-.signup-fv{
-  text-align: center;
-}
-
-.top-title h2,.login-main h2,.signup-main h2{
-  font-size: 100px;
-  font-weight: bold;
-}
-
-.top-btn{
-  margin: 60px 0;
-  display: flex;
-  justify-content: center;
-}
-
-.top-btn li a,.login-btn,.signup-btn,.change-btn,.edit-btn,.delete-btn{
-  color: var(--main-text-color);
-  background: var(--main-bg-color);
-  margin: 20px;
-  padding: 13px 30px;
-  border-radius: 5px;
-  text-decoration: none;
-}
-
 /* login / signup */
 input{
   outline: none;
@@ -237,27 +198,6 @@ input:-webkit-autofill {
 }
 
 /* top */
-
-.wrapper{
-  display: flex;
-  justify-content: center;
-  max-width: 1000px;
-  margin: auto;
-  margin-top: 60px;
-}
-
-.sidebar{
-  position: sticky;
-  top: 0;
-  width: 40%;
-  height: 100%;
-  margin: 0 20px;
-  margin-top: 50px;
-  padding: 10px 0;
-  background: var(--sub-bg-color);
-}
-
-
 .user-area{
   display: flex;
   align-items: center;
@@ -305,9 +245,14 @@ input:-webkit-autofill {
   background: var(--main-color);
 }
 
-.micropost-main{
-  width: 60%;
-  margin: 0 20px;
+.archive-sidebar{
+  background: var(--sub-bg-color);
+  overflow: scroll;
+}
+
+.archive-sidebar__desc{
+  position: unset;
+  margin: 0 15px;
 }
 
 .archive-item{
@@ -315,9 +260,15 @@ input:-webkit-autofill {
   border-bottom: 1px solid #000;
 }
 
+.archive-item__wrapper{
+  display: flex;
+  justify-content: space-between;
+}
+
 .archive-item__user{
   display: flex;
   align-items: center;
+  color: var(--sub-text-color);
 }
 .archive-item__user img{
   width: 50px;
@@ -336,6 +287,7 @@ input:-webkit-autofill {
 
 .archive-item__post{
   margin-top: 20px;
+  color: var(--sub-text-color);
   word-break: break-all ;
 }
 
@@ -345,6 +297,8 @@ input:-webkit-autofill {
   margin: 10px 0;
   font-size: 10px;
 }
+
+
 
 /* edit */
 .edit{

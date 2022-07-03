@@ -1,49 +1,56 @@
 <%- include("./header"); %>
-  <section class="wrapper">
-    <aside class="sidebar">
-      <section class="user-area">
-        <div class="user-icon">
-          <a href="/profile/<%= username %>"><img src="uploads/<%= img %>" alt="user-icon"></a>
-        </div>
-        <div class="user-detail">
-            <h2 id="username"><%= username %></h2>
-            <p><a href="/profile">profile<img src="images/new-window.png" alt="new-window"></a></p>
-        </div>
-      </section>
-      <section class="post-area">
-        <form action="/top" method="post">
-          <input type="hidden" name="username" value="<%= username %>">
-          <textarea name="text" id="" cols="30" rows="10" placeholder="new micropost"></textarea>
-          <input type="submit" value="post">
-        </form>
-      </section>
-    </aside>
-    <main class="micropost-main">
-      <section class="archive-area">
-        <ul class="archive-list">
-          <% microposts.forEach((value)=> { %>
-            <% console.log(value) %>
-            <li class="archive-item">
-              <div class="archive-item__user">
-                <a href="/profile/<%= value.user_name %>"><img src="uploads/<%= value.img %>" alt="user-icon"></a>
-                <p><span><%= value.user_name %></span></p>
-              </div>
-              <form action="/delete" method="post" class="archive-item__status" onsubmit="return doDelete();">
-                <input type="hidden" name="micropost_id" value="<%= value.id %>">
-                <input type="submit" value="delete">
-              </form>
-              <div class="archive-item__post">
-              <p><%= value.message %></p>
-              <time>
-                <%= value.createdAt %>
-              </time>
+  <main class="common-main">
+    <section class="common-section">
+        <div class="common-section__wrapper">
+          <div class="user-area">
+            <div class="user-icon">
+              <a href="/profile/<%= username %>"><img src="uploads/<%= img %>" alt="user-icon"></a>
             </div>
-          </li> 
-          <% }); %>
-        </ul>
-      </section>
-    </main>
-  </section>
+            <div class="user-detail">
+                <h2 id="username"><%= username %></h2>
+                <p><a href="/profile">profile<img src="images/new-window.png" alt="new-window"></a></p>
+            </div>
+          </div>
+          <div class="post-area">
+            <form action="/top" method="post">
+              <input type="hidden" name="username" value="<%= username %>">
+              <textarea name="text" id="" cols="30" rows="10" placeholder="new micropost"></textarea>
+              <input type="submit" value="post">
+            </form>
+          </div>
+        </div>
+    </section>
+    <aside class="common-sidebar archive-sidebar">
+        <div class="common-sidebar__desc archive-sidebar__desc">
+
+          <ul class="archive-list">
+            <% microposts.forEach((value)=> { %>
+              <% console.log(value) %>
+              <li class="archive-item">
+                <div class="archive-item__wrapper">
+                  <div class="archive-item__user">
+                    <a href="/profile/<%= value.user_name %>"><img src="uploads/<%= value.img %>" alt="user-icon"></a>
+                    <p><span><%= value.user_name %></span></p>
+                  </div>
+                  <form action="/delete" method="post" class="archive-item__status" onsubmit="return doDelete();">
+                    <input type="hidden" name="micropost_id" value="<%= value.id %>">
+                    <input type="submit" value="delete">
+                  </form>
+                </div>
+
+                <div class="archive-item__post">
+                  <p><%= value.message %></p>
+                  <time>
+                    <%= value.createdAt %>
+                  </time>
+                </div>
+              </li> 
+            <% }); %>
+          </ul>
+
+        </div>
+    </aside>
+</main>
 <script src="../javascripts/index.js"></script>
 
 <%- include("./footer"); %>
