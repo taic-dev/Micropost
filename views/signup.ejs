@@ -1,61 +1,65 @@
 <%- include( './header' ) %>
-<main class="signup-main">
-    <section class="signup-fv">
-        <div class="signup-title">
-            <h2>Sign up</h2>
-        </div>
-        <form action="/signup" method="post" enctype="multipart/form-data" class="signup-form">
-            <% if(errors){ %>
-                <% errors.find(obj=>{ %>
-                    <% if(obj.param == 'signup_error'){ %>
-                        <span><%= obj.msg %></span>
+<main class="common-main">
+    <section class="common-section">
+        <div class="common-section__wrapper">
+            <form action="/signup" method="post" enctype="multipart/form-data" class="signup-form">
+                <% if(errors){ %>
+                    <% errors.find(obj=>{ %>
+                        <% if(obj.param == 'signup_error'){ %>
+                            <span><%= obj.msg %></span>
+                        <% } %>
+                    <% }); %>
+                <% } %>
+                <div class="form-group">
+                    <label for="text">ユーザー名</label>
+                    <input type="text" value="<%= form.username %>" name="username" id="username">
+                    <% if(errors){ %>
+                        <% errors.find(obj=>{ %>
+                            <% if(obj.param == 'username'){ %>
+                                <span><%= obj.msg %></span>
+                            <% } %>
+                        <% }); %>
                     <% } %>
-                <% }); %>
-            <% } %>
-            <div class="form-group">
-                <label for="text">ユーザー名</label>
-                <input type="text" value="<%= form.username %>" name="username" id="username">
-                <% if(errors){ %>
-                    <% errors.find(obj=>{ %>
-                        <% if(obj.param == 'username'){ %>
-                            <span><%= obj.msg %></span>
-                        <% } %>
-                    <% }); %>
-                <% } %>
-            </div>
-            <div class="form-group">
-                <label for="mail">メールアドレス</label>
-                <input type="mail" value="<%= form.mail %>" name="mail" id="mail">
-                <% if(errors){ %>
-                    <% errors.find(obj=>{ %>
-                        <% if(obj.param == 'mail'){ %>
-                            <span><%= obj.msg %></span>
-                        <% } %>
-                    <% }); %>
-                <% } %>
-            </div>
-            <div class="form-group">
-                <label for="password">パスワード</label>
-                <input type="password" value="<%= form.password %>" name="password" id="password">
-            </div>
-            <div class="form-group">
-                <label for="password_confirmation">パスワード確認</label>
-                <input type="password" value="<%= form.password_confirmation %>" name="password_confirmation" id="password_confirmation">
-                <% if(errors){ %>
-                    <% errors.find(obj=>{ %>
-                        <% if(obj.param == 'password'){ %>
-                            <span><%= obj.msg %></span>
-                        <% } %>
-                    <% }); %>
-                <% } %>
-            </div>
-            <div class="form-group">
-                <img src="uploads/sample.png" alt="ユーザアイコン" id="image">
-                <input type="file" id="file-change" name="file">
-            </div>
-            <input type="submit" value="Sign up" class="signup-btn">
-        </form>
+                </div>
+                <div class="form-group">
+                    <label for="mail">メールアドレス</label>
+                    <input type="mail" value="<%= form.mail %>" name="mail" id="mail">
+                    <% if(errors){ %>
+                        <% errors.find(obj=>{ %>
+                            <% if(obj.param == 'mail'){ %>
+                                <span><%= obj.msg %></span>
+                            <% } %>
+                        <% }); %>
+                    <% } %>
+                </div>
+                <div class="form-group">
+                    <label for="password">パスワード</label>
+                    <input type="password" value="<%= form.password %>" name="password" id="password">
+                </div>
+                <div class="form-group">
+                    <label for="password_confirmation">パスワード確認</label>
+                    <input type="password" value="<%= form.password_confirmation %>" name="password_confirmation" id="password_confirmation">
+                    <% if(errors){ %>
+                        <% errors.find(obj=>{ %>
+                            <% if(obj.param == 'password'){ %>
+                                <span><%= obj.msg %></span>
+                            <% } %>
+                        <% }); %>
+                    <% } %>
+                </div>
+                <div class="form-group form-group__upload">
+                    <img src="uploads/sample.png" alt="ユーザアイコン" id="image">
+                    <input type="file" id="file-change" name="file" onchange="fileChange(event)">
+                </div>
+                <input type="submit" value="Sign up" class="common-btn">
+            </form>
+        </div>
     </section>
+    <aside class="common-sidebar">
+        <div class="common-sidebar__desc">
+            <h2>Welcome to <span>Micropost</span></h2>
+            <p>Feel free to post</p>
+        </div>
+    </aside>
 </main>
 <script src="../javascripts/index.js"></script>
-<%- include( './footer' ) %>

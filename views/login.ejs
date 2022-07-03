@@ -1,40 +1,45 @@
-<%- include( './header' ) %>
-<main class="login-main">
-    <section class="login-fv">
-        <div class="login-title">
-            <h2>Log in</h2>
-        </div>
-        <form action="/login" method="post" class="login-form">
-            <% if(errors){ %>
-                <% errors.find(obj=>{ %>
-                    <% if(obj.param == 'login_error'){ %>
-                        <span><%= obj.msg %></span>
+<%- include( './header' ) %>   
+<main class="common-main">
+    <section class="common-section">
+        <div class="common-section__wrapper">
+            <form action="/login" method="post" class="common-form">
+                <% if(errors){ %>
+                    <% errors.find(obj=>{ %>
+                        <% if(obj.param == 'login_error'){ %>
+                            <span><%= obj.msg %></span>
+                        <% } %>
+                    <% }); %>
+                <% } %>
+                <div class="form-group">
+                    <label for="mail">メールアドレス</label>
+                    <input type="mail" value="<%= form.mail %>" name="mail" id="mail">
+                    <% if(errors){ %>
+                        <% errors.find(obj=>{ %>
+                            <% if(obj.param == 'mail'){ %>
+                                <span><%= obj.msg %></span>
+                            <% } %>
+                        <% }); %>
                     <% } %>
-                <% }); %>
-            <% } %>
-            <div class="form-group">
-                <label for="mail">メールアドレス</label>
-                <input type="mail" value="<%= form.mail %>" name="mail" id="mail">
-                <% if(errors){ %>
-                    <% errors.find(obj=>{ %>
-                        <% if(obj.param == 'mail'){ %>
-                            <span><%= obj.msg %></span>
-                        <% } %>
-                    <% }); %>
-                <% } %>
-            </div>
-            <div class="form-group">
-                <label for="password">パスワード</label>
-                <input type="password" value="<%= form.password %>" name="password" id="password">
-                <% if(errors){ %>
-                    <% errors.find(obj=>{ %>
-                        <% if(obj.param == 'password'){ %>
-                            <span><%= obj.msg %></span>
-                        <% } %>
-                    <% }); %>
-                <% } %>
-            </div>
-            <input type="submit" value="Log in" class="login-btn">
-        </form>
+                </div>
+                <div class="form-group">
+                    <label for="password">パスワード</label>
+                    <input type="password" value="<%= form.password %>" name="password" id="password">
+                    <% if(errors){ %>
+                        <% errors.find(obj=>{ %>
+                            <% if(obj.param == 'password'){ %>
+                                <span><%= obj.msg %></span>
+                            <% } %>
+                        <% }); %>
+                    <% } %>
+                </div>
+                <input type="submit" value="Log in" class="common-btn">
+            </form>
+        </div>
     </section>
+    <aside class="common-sidebar">
+        <div class="common-sidebar__desc">
+            <h2>Welcome to <span>Micropost</span></h2>
+            <p>Login in to your account</p>
+        </div>
+    </aside>
 </main>
