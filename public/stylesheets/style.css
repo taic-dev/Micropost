@@ -1,6 +1,6 @@
 :root{
-  --main-color: #6C63FF;
-  --sub-color: #6DBBDE;
+  --main-color: #4ca1af;
+  --sub-color: #c4e0e5;
 
   --main-text-color: #fff;
   --sub-text-color: #000;
@@ -16,14 +16,93 @@
 
 
 body {
-  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-main{
-  margin-top: 60px;
+  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Zen Maru Gothic', sans-serif;
 }
 
 /* common */
+.common-main{
+   display: flex;
+   height: 100vh;
+}
+
+.common-section{
+  position: relative;
+  max-width: 480px;
+  width: 100%;
+  margin-top: 60px;
+}
+
+.common-section__wrapper{
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+
+}
+
+.common-sidebar{
+  position: relative;
+  width: calc(100vw - 480px);
+  background-color: var(--main-color);
+}
+
+.common-sidebar__desc{
+  position: absolute;
+  top: 30%;
+  left: 100px;
+  z-index: 1;
+
+  color: var(--main-text-color);
+}
+
+.common-sidebar__desc h2{
+  position: relative;
+  font-size: clamp(20px,3.3vw,50px);
+  font-weight: normal;
+}
+
+.common-sidebar__desc h2::before{
+  position: absolute;
+  top: -70px;
+  left: -100px;
+  z-index: -1;
+
+  width: 300px;
+  content: url('../images/top.svg');
+}
+
+.common-sidebar__desc span{
+  font-weight: bold;
+}
+
+.common-sidebar__desc p{
+  font-size: clamp(13px,3.3vw,20px);
+}
+
+.common-section__wrapper a:first-child{
+  margin-bottom: 80px;
+}
+
+.common-btn{
+  display: block;
+  padding: 15px 60px;
+  text-decoration: none;
+  border-radius: 25px;
+  color: var(--main-text-color);
+  background: var(--main-color);
+  transition: 0.5s;
+  /* background: -moz-linear-gradient(left, var(--main-color), var(--main-text-color));
+  background: -webkit-linear-gradient(left, var(--main-color), var(--main-text-color));
+  background: linear-gradient(to right, var(--main-color), var(--main-text-color)); */
+}
+
+.common-btn:hover{
+  background: var(--sub-color);
+  transition: 0.5s;
+}
+
+
 .success-message{
   display: block;
   margin: 10px 0;
@@ -53,10 +132,11 @@ main{
 /* header */
 
 .header{
+  width: 480px;
   height: 60px;
   padding: 0 20px;
-  color: var(--main-text-color);
-  background: var(--main-bg-color);
+  color: var(--sub-text-color);
+  background: var(--sub-bg-color);
 
   display: flex;
   align-items: center;
@@ -69,13 +149,13 @@ main{
 }
 
 .title a{
-  color: #fff;
+  color: #000;
   text-decoration: none;
 }
 
 .menu{display: flex;}
 .menu>*{margin-left: 15px;}
-.menu-item a{color: white; text-decoration: none;}
+.menu-item a{color: #000; text-decoration: none;}
 
 /* top */
 .top-main,.login-main{

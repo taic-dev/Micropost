@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
   <!-- fontAwesome -->
   <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   <!-- CSS -->
@@ -14,15 +18,12 @@
 <body>
   <header class="header">
     <div class="title">
-      <h1><a href="/top">truthPost</a></h1>
+      <h1><a href="/top">Micropost</a></h1>
     </div>
     <nav>
       <ul class="menu">
-        <% if(!isAuth){ %>
-        <li class="menu-item"><a href="/signup">Sign up</a></li>
-        <li class="menu-item"><a href="/login">Log in</a></li>
-        <% }else{ %>
-        <li class="menu-item"><a id="logout" href="#" onclick="return doLogout(this);">Log out</a></li>
+        <% if(isAuth){ %>
+          <li class="menu-item"><a id="logout" href="#" onclick="return doLogout(this);">Log out</a></li>
         <% } %>
       </ul>
     </nav>
