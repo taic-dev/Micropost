@@ -2,7 +2,7 @@ const { check } = require('express-validator');
 
 const validationList = {
     login: [
-        check('mail','メールアドレスを記入してください').isEmail().escape(),
+        check('mail','メールアドレスを記入してください').notEmpty().isEmail().escape(),
         check('password','パスワードを記入してください').notEmpty().escape()
     ],
     signup: [
@@ -13,6 +13,9 @@ const validationList = {
             if(req.body.password !== req.body.password_confirmation){throw new Error('パスワードが一致していません');}
             return true;
         })
+    ],
+    reset: [
+        check('mail','メールアドレスを記入してください').notEmpty().isEmail().escape()
     ],
 }
 

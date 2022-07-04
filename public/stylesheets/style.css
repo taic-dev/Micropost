@@ -197,6 +197,11 @@ input:-webkit-autofill {
   text-align: center;
 }
 
+.password-forget{
+  margin-top: 50px;
+  text-align: center;
+}
+
 /* top */
 .user-area{
   display: flex;

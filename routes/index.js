@@ -6,6 +6,7 @@ const router = express.Router();
 ************************/
 const indexController = require('../controllers/index');
 const loginController = require('../controllers/login');
+const resetController = require('../controllers/reset');
 const signupController = require('../controllers/signup');
 const logoutController = require('../controllers/logout');
 const topController = require('../controllers/top');
@@ -46,6 +47,13 @@ router.get('/',indexController.showIndex);
 router.get('/login',loginController.showLogin);
 
 router.post('/login',validationList.login,loginController.doLogin);
+
+/************************
+ * Reset routing
+************************/
+router.get('/reset',resetController.showReset);
+
+router.post('/reset',validationList.reset,resetController.doReset);
 
 /************************
  * Signup routing
