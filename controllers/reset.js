@@ -1,18 +1,22 @@
 require('dotenv').config();
+const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 const db = require('../models');
 
 const resetController = {
-    showReset:(req,res,next)=>{
-        res.render('reset',{
+    showApplication:(req,res,next)=>{
+        res.render('application',{
             isAuth: false,
             errors: '',
             success: ''
         });
     },
 
-    doReset: async (req,res,next)=>{
+    doApplication: async (req,res,next)=>{
         const mail = req.body.mail;
+        const randomStr = Math.random().toFixed(36).substring(2,38);
+        const token = crypto.createHmac('sha256', process.env.APP_KEY).update(randomStr).digest('hex');
+        const passwordResetUrl = process.env.APP_URL + 'reset' + token + '?mail=' + encodeURIComponent(mail);
 
         const result = await db.User.findAll({
             where: {
@@ -21,13 +25,18 @@ const resetController = {
         });
 
         if(!result[0]){
-            res.render('reset',{
+            res.render('application',{
                 isAuth: false,
                 errors: '存在しないメールアドレスです',
                 success: ''
             });
             return;
         }
+
+        db.User.update(
+            {token: token},
+            {where: {email: mail}}
+        );
 
         // メール送信処理
         const transporter = nodemailer.createTransport({
@@ -43,7 +52,7 @@ const resetController = {
         const data = {
             from: `aaa@example.com`,
             to: `c.t.o.taishi.0530@gmail.com`,
-            html: `以下のURLからパスワードの再設定を行ってください。\n\n URL`,
+            html: `以下のURLからパスワードの再設定を行ってください。\n\n ${passwordResetUrl}`,
             subject: 'パスワードの再発行メール',
         }
 
@@ -55,12 +64,26 @@ const resetController = {
             }
         });
 
-        res.render('reset',{
+        res.render('application',{
             isAuth: false,
             errors: '',
             success: '送付したメールアドレスからパスワードの再設定を行ってください。'
         })
 
+    },
+
+    showReset: (req,res,next) => {
+        res.render('reset',{
+            isAuth: false,
+            errors: '',
+            success: '',
+            token: req.params.token,
+            mail: req.query.mail
+        });
+    },
+
+    doReset: (req,res,next) => {
+        
     }
 
 

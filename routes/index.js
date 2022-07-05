@@ -51,9 +51,11 @@ router.post('/login',validationList.login,loginController.doLogin);
 /************************
  * Reset routing
 ************************/
-router.get('/reset',resetController.showReset);
+router.get('/application',resetController.showApplication);
 
-router.post('/reset',validationList.reset,resetController.doReset);
+router.get('/reset:token',resetController.showReset);
+
+router.post('/application',validationList.reset,resetController.doApplication);
 
 /************************
  * Signup routing

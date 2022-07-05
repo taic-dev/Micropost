@@ -1,0 +1,22 @@
+<%- include('./header') %>
+<main class="common-main">
+    <section class="common-section">
+        <div class="common-section__wrapper">
+            <form action="/application" method="post" class="common-form">
+                <div class="form-group">
+                    <label for="mail">メールアドレス</label>
+                    <input type="mail" value="" name="mail" id="mail">
+                </div>
+                <span><%= errors %></span>
+                <input type="submit" value="Apply" class="common-btn">
+                <span><%= success %></span>
+            </form>
+        </div>
+    </section>
+    <aside class="common-sidebar">
+        <div class="common-sidebar__desc">
+            <h2>Welcome to <span>Micropost</span></h2>
+            <p>Application Page</p>
+        </div>
+    </aside>
+</main>

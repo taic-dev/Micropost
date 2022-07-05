@@ -25,6 +25,10 @@ module.exports = {
       delete_flag: {
         type: Sequelize.BOOLEAN
       },
+      token: {
+        default: 0,
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
