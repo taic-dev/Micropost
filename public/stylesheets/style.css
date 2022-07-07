@@ -234,6 +234,7 @@ input:-webkit-autofill {
   height: 150px;
   margin: 20px 0;
   padding: 10px;
+  line-height: 1.5;
 }
 
 .post-area input{

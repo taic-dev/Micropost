@@ -92,7 +92,8 @@ const signupController = {
             email: res.locals.mail,
             password: res.locals.password,
             img: res.locals.image,
-            delete_flag: 0
+            delete_flag: 0,
+            token: "test"
         })
 
         if(result !== undefined){

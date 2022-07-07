@@ -160,7 +160,6 @@ const editController = {
 
         res.redirect('/');
     },
-
 }
 
 module.exports = editController;

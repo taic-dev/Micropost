@@ -6,19 +6,20 @@ const router = express.Router();
 ************************/
 const indexController = require('../controllers/index');
 const loginController = require('../controllers/login');
+const applicationController = require('../controllers/application');
 const resetController = require('../controllers/reset');
 const signupController = require('../controllers/signup');
 const logoutController = require('../controllers/logout');
 const topController = require('../controllers/top');
 const profileController = require('../controllers/profile');
 const editController = require('../controllers/edit');
+const validationList = require('../controllers/validationList');
+const errorController = require('../controllers/error');
 
 /************************
  * Models
 ************************/
 const db = require('../models/');
-const validationList = require('../controllers/validationList');
-const errorController = require('../controllers/error');
 
 /************************
  * Image upload
@@ -49,13 +50,23 @@ router.get('/login',loginController.showLogin);
 router.post('/login',validationList.login,loginController.doLogin);
 
 /************************
+ * Application routing
+************************/
+
+router.get('/application',applicationController.showApplication);
+
+router.post(
+    '/application',
+    validationList.reset,
+    applicationController.judgeApplication,
+    applicationController.doApplication
+);
+
+/************************
  * Reset routing
 ************************/
-router.get('/application',resetController.showApplication);
 
-router.get('/reset:token',resetController.showReset);
-
-router.post('/application',validationList.reset,resetController.doApplication);
+router.get('/reset/:token',resetController.showReset);
 
 /************************
  * Signup routing
