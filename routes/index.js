@@ -80,10 +80,10 @@ router.get('/top', topController.showTop);
 router.post('/top',topController.addPost);
 
 /************************
- * Delete routing
+ * Delete Post routing
 ************************/
 
-router.post('/delete',topController.deletePost);
+router.post('/delete-post',topController.deletePost);
 
 /************************
  * Logout routing
@@ -116,5 +116,11 @@ router.post(
     editController.judgeProfile,
     editController.changeProfile
 );
+
+/************************
+ * Delete  routing
+************************/
+
+router.get('/delete-account/:userName',editController.deleteAccount);
 
 module.exports = router;

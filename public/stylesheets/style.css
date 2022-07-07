@@ -296,6 +296,10 @@ input:-webkit-autofill {
   word-break: break-all ;
 }
 
+.archive-item__post p{
+  font-size: 14px;
+}
+
 .archive-item__post time{
   display: block;
   text-align: right;

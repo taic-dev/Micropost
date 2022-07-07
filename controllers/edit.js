@@ -148,7 +148,18 @@ const editController = {
                 img: res.locals.image
             }
         });
-    }
+    },
+
+    deleteAccount: async (req,res,next)=>{
+        const username = req.params.userName;
+
+        const result = await db.User.update(
+            { delete_flag: 1 },
+            { where: {name: username}}
+        );
+
+        res.redirect('/');
+    },
 
 }
 

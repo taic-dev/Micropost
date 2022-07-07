@@ -32,7 +32,7 @@
                     <a href="/profile/<%= value.user_name %>"><img src="uploads/<%= value.img %>" alt="user-icon"></a>
                     <p><span><%= value.user_name %></span></p>
                   </div>
-                  <form action="/delete" method="post" class="archive-item__status" onsubmit="return doDelete();">
+                  <form action="/delete-post" method="post" class="archive-item__status" onsubmit="return doDelete();">
                     <input type="hidden" name="micropost_id" value="<%= value.id %>">
                     <input type="submit" value="delete">
                   </form>

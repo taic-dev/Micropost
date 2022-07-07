@@ -34,7 +34,8 @@ const loginController = {
         db.User.findAll({
             where: {
                 email: mail,
-                password: password
+                password: password,
+                delete_flag: 0
             }
         }).then(result => {
             if(result[0] !== undefined){
