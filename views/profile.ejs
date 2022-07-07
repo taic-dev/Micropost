@@ -1,61 +1,31 @@
-<%- include( './header' ) %>
-<section class="edit">
-    <div class="common-title">
-        <h2>プロフィール</h2>
-    </div>
-    <div class="edit-form__delete">
-        <a href="/edit" class="">プロフィール編集</a>
-    </div>
-    <form action="/edit" method="post" enctype="multipart/form-data" class="edit-form">
-        <ul class="edit-form__list">
-            <li class="edit-form__item">
-                <div class="edit-form__img">
+<%- include( './header' ) %>   
+<main class="common-main">
+    <section class="common-section">
+        <div class="common-section__wrapper">
+            <form action="#" method="post" class="common-form">
+                <div class="form-group">
+                    <label for="mail">メールアドレス</label>
+                    <input type="mail" value="<%= form.mail %>" name="mail" id="mail" disabled="disabled">
+                </div>
+                <div class="form-group">
+                    <label for="password">パスワード</label>
+                    <input type="password" value="<%= form.password %>" name="password" id="password" disabled="disabled">
+                </div>
+                <div class="form-group form-group__upload">
                     <img src="../uploads/<%= form.img %>" alt="ユーザアイコン" id="image">
                 </div>
-            </li>
-            <li class="edit-form__item">
-                <div class="edit-from__group">
-                    <label for="username">
-                        ユーザ名
-                        <% if(errors){ %>
-                            <% errors.find(obj=>{ %>
-                                <% if(obj.param == 'username'){ %>
-                                    <span><%= obj.msg %></span>
-                                <% } %>
-                            <% }); %>
-                        <% } %>
-                    </label>
-                    <input type="text" name="username" id="username" value="<%= form.username %>" readonly="readonly">
-                </div>
-                <div class="edit-from__group">
-                    <label for="username">
-                        メールアドレス
-                        <% if(errors){ %>
-                            <% errors.find(obj=>{ %>
-                                <% if(obj.param == 'mail'){ %>
-                                    <span><%= obj.msg %></span>
-                                <% } %>
-                            <% }); %>
-                        <% } %>
-                    </label>
-                    <input type="mail" name="mail" id="mail" value="<%= form.mail %>" readonly="readonly">
-                </div>
-                <div class="edit-from__group">
-                    <label for="password">
-                        パスワード
-                        <% if(errors){ %>
-                            <% errors.find(obj=>{ %>
-                                <% if(obj.param == 'password'){ %>
-                                    <span><%= obj.msg %></span>
-                                <% } %>
-                            <% }); %>
-                        <% } %>
-                    </label>
-                    <input type="password" name="password" id="password" value="<%= form.password %>" readonly="readonly">
-                </div>
-            </li>
-        </ul>
-    </form>
-</section>
+            </form>
+            <div class="password-forget">
+                <a href="/edit">プロフィールを編集する</a>
+            </div>
+        </div>
+    </section>
+    <aside class="common-sidebar">
+        <div class="common-sidebar__desc">
+            <h2>Welcome to <span>Micropost</span></h2>
+            <p>Your profile</p>
+        </div>
+    </aside>
+</main>
 
 <script src="../javascripts/index.js"></script>

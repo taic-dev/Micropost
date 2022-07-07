@@ -33,10 +33,22 @@ const resetController = {
             return;
         }
 
-        db.User.update(
-            {token: token},
+        console.log(token);
+        console.log(mail);
+
+        // updateできない
+        const find = db.User.findAll(
             {where: {email: mail}}
         );
+
+        find.token = `${token}`;
+
+        await find.save();
+
+        console.log(find);
+
+        return;
+        // updateできない
 
         // メール送信処理
         const transporter = nodemailer.createTransport({

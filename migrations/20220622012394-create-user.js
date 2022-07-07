@@ -26,7 +26,7 @@ module.exports = {
         type: Sequelize.BOOLEAN
       },
       token: {
-        default: 0,
+        defaultValue: Math.random().toFixed(36).substring(2,38),
         type: Sequelize.STRING
       },
       createdAt: {

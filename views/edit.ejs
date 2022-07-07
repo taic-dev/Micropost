@@ -1,77 +1,61 @@
-<%- include('./header') %>
-<main class="edit-main">
-    <section class="edit">
-        <div class="common-title">
-            <h2>編集ページ</h2>
-        </div>
-        <div class="edit-form__delete">
-            <a href="/delete" class="delete-btn">アカウント削除</a>
-        </div>
-        <div class="">
-            <%= message %>
-        </div>
-        <form action="/edit" method="post" enctype="multipart/form-data" class="edit-form">
-            <ul class="edit-form__list">
-                <li class="edit-form__item">
-                    <div class="edit-form__img">
-                        <img src="../uploads/<%= form.img %>" alt="ユーザアイコン" id="image">
-                        <input type="file" id="file-change" name="file" onchange="fileChange(event);">
-                    </div>
-                </li>
-                <li class="edit-form__item">
-                    <div class="edit-from__group">
-                        <label for="username">
-                            ユーザ名
-                            <% if(errors){ %>
-                                <% errors.find(obj=>{ %>
-                                    <% if(obj.param == 'username'){ %>
-                                        <span><%= obj.msg %></span>
-                                    <% } %>
-                                <% }); %>
+<%- include( './header' ) %>
+<main class="common-main">
+    <section class="common-section">
+        <div class="common-section__wrapper">
+            <form action="/edit" method="post" enctype="multipart/form-data" class="signup-form">
+                <%= message %>
+                <div class="form-group">
+                    <label for="text">ユーザー名</label>
+                    <input type="text" value="<%= form.username %>" name="username" id="username">
+                    <% if(errors){ %>
+                        <% errors.find(obj=>{ %>
+                            <% if(obj.param == 'username'){ %>
+                                <span><%= obj.msg %></span>
                             <% } %>
-                        </label>
-                        <input type="text" name="username" id="username" value="<%= form.username %>">
-                    </div>
-                    <div class="edit-from__group">
-                        <label for="username">
-                            メールアドレス
-                            <% if(errors){ %>
-                                <% errors.find(obj=>{ %>
-                                    <% if(obj.param == 'mail'){ %>
-                                        <span><%= obj.msg %></span>
-                                    <% } %>
-                                <% }); %>
+                        <% }); %>
+                    <% } %>
+                </div>
+                <div class="form-group">
+                    <label for="mail">メールアドレス</label>
+                    <input type="mail" value="<%= form.mail %>" name="mail" id="mail">
+                    <% if(errors){ %>
+                        <% errors.find(obj=>{ %>
+                            <% if(obj.param == 'mail'){ %>
+                                <span><%= obj.msg %></span>
                             <% } %>
-                        </label>
-                        <input type="mail" name="mail" id="mail" value="<%= form.mail %>">
-                    </div>
-                    <div class="edit-from__group">
-                        <label for="password">
-                            パスワード
-                            <% if(errors){ %>
-                                <% errors.find(obj=>{ %>
-                                    <% if(obj.param == 'password'){ %>
-                                        <span><%= obj.msg %></span>
-                                    <% } %>
-                                <% }); %>
+                        <% }); %>
+                    <% } %>
+                </div>
+                <div class="form-group">
+                    <label for="password">パスワード</label>
+                    <input type="password" value="<%= form.password %>" name="password" id="password">
+                </div>
+                <div class="form-group">
+                    <label for="password_confirmation">パスワード確認</label>
+                    <input type="password" value="<%= form.password_confirmation %>" name="password_confirmation" id="password_confirmation">
+                    <% if(errors){ %>
+                        <% errors.find(obj=>{ %>
+                            <% if(obj.param == 'password'){ %>
+                                <span><%= obj.msg %></span>
                             <% } %>
-                        </label>
-                        <input type="password" name="password" id="password" value="<%= form.password %>">
-                    </div>
-                    <div class="edit-from__group">
-                        <label for="password_confirmation">
-                            パスワード確認
-                            <span></span>
-                        </label>
-                        <input type="password" name="password_confirmation" id="password_confirmation">
-                    </div>
-                </li>
-            </ul>
-            <div class="edit-from__btn">
-                <input type="submit" value="edit" class="edit-btn">
-            </div>
-        </form>
+                        <% }); %>
+                    <% } %>
+                </div>
+                <div class="form-group form-group__upload">
+                    <img src="../uploads/<%= form.img %>" alt="ユーザアイコン" id="image">
+                    <input type="file" id="file-change" name="file" onchange="fileChange(event);">
+                </div>
+                <input type="submit" value="Edit" class="common-btn">
+                <input type="submit" value="Delete account" class="common-btn delete-btn">
+            </form>
+        </div>
     </section>
+    <aside class="common-sidebar">
+        <div class="common-sidebar__desc">
+            <h2>Welcome to <span>Micropost</span></h2>
+            <p>Edit page</p>
+        </div>
+    </aside>
 </main>
 <script src="../javascripts/index.js"></script>
 <%- include('./footer') %>

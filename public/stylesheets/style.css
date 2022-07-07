@@ -303,158 +303,16 @@ input:-webkit-autofill {
   font-size: 10px;
 }
 
-
-
 /* edit */
-.edit{
-  max-width: 1000px;
-  margin: auto;
-}
-
-.edit-form__delete{
-  font-size: 13px;
-  text-align: right;
-  margin-bottom: 50px;
-}
-
 .delete-btn{
-  margin-right: 0;
-}
-
-.edit-form__list{
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 50px;
-}
-
-.edit-form__item{
-  width: 50%;
-}
-
-.edit-form__item:last-child{
-  border: solid 1px #808080;
-}
-
-.edit-form__img{
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-}
-
-.edit-form__img img{
-  width: 190px;
-  border: dotted;
-}
-
-.edit-from__group{
-  position: relative;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-bottom: solid 1px #808080;
-}
-
-.edit-from__group label{
-  width: 30%;
-  height: 100%;
-  background: #f5f5f5;
-  padding-left: 10px;
-
-  font-size: 13px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  border-right: solid 1px #808080;
-}
-
-.edit-from__group input{
-  display: block;
-  width: 70%;
-  height: 100%;
-  padding-left: 10px;
-  outline: none;
-}
-
-.edit-from__group span{
-  position: absolute;
-  left: 50%;
-  bottom: 5px;
-  color: var(--message-error);
-}
-
-.edit-from__btn{
-  text-align: center;
-}
-
-/* mypage */
-.mypage-main{
-  width: 50%;
-}
-
-.mypage-sidebar{
-  margin-top: 120px;
-  width: 50%;
-}
-
-.mypage-area,.mypage-main{
-  text-align: center;
-}
-
-.mypage-area img{
-  width: 200px;
-  height: 200px;
-  border: #6C63FF 5px solid;
-  border-radius: 50%;
-}
-
-.mypage-detail{
-  text-align: center;
-  width: 100vw;
-  min-height: calc(100vh - 60px);
-  margin-top: 60px;
-  background: rgba(0,0,0,0.5);
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.mypage-detail form{
-  position: relative;
-  width: 540px;
-  margin: auto;
-  padding: 0 30px;
-  background: #fff;
-}
-
-.close-btn{
-  position: absolute;
-  top: -15px;
-  right: -15px;
-  z-index: 1;
-  border-radius: 15px;
+  margin-top: 50px;
   background: #000;
-  width: 30px;
-  height: 30px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  cursor: pointer;
-  color: #fff;
 }
 
-.close-btn::after{
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  background: red;
+.delete-btn:hover{
+  background: #000;
+  opacity: 0.5;
 }
-
 
 .footer{
   text-align: center;
