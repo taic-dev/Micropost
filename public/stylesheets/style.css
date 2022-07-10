@@ -299,6 +299,7 @@ input:-webkit-autofill {
 
 .archive-item__post p{
   font-size: 14px;
+  line-height: 1.5;
 }
 
 .archive-item__post time{

@@ -5,37 +5,32 @@ const db = require("../models");
 const topController = {
 
     showTop: async (req, res, next) => {
-        // if(req.session.username){
-            const user_id = req.session.user_id;
-            const username = req.session.username;
-            const img = req.session.image
-            const isAuth = Boolean(user_id);
+        const user_id = req.session.user_id;
+        const username = req.session.username;
+        const img = req.session.image
+        const isAuth = Boolean(user_id);
 
-            const result = await db.Microposts.findAll({
-                include: [{ 
-                        model: db.User,
-                        required: true
-                }],
-                where: {
-                    delete_flag: 0
-                },
-                order: [
-                    ['id', 'DESC']
-                  ]
-            });
+        const result = await db.Microposts.findAll({
+            include: [{ 
+                    model: db.User,
+                    required: true
+            }],
+            where: {
+                delete_flag: 0
+            },
+            order: [
+                ['id', 'DESC']
+                ]
+        });
 
-            const post = valueObject.infMaintenance(result);
+        const post = valueObject.infMaintenance(result);
 
-            res.render('top',{
-                microposts: post,
-                username: username,
-                img: img,
-                isAuth: isAuth
-            });
-            
-        //     return;
-        // }
-        // res.redirect('/');
+        res.render('top',{
+            microposts: post,
+            username: username,
+            img: img,
+            isAuth: isAuth
+        });
     },
 
     addPost: (req, res, next) => {
