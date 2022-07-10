@@ -44,6 +44,13 @@
                 <div class="form-group form-group__upload">
                     <img src="../uploads/<%= form.img %>" alt="ユーザアイコン" id="image">
                     <input type="file" id="file-change" name="file" onchange="fileChange(event);">
+                    <% if(errors){ %>
+                        <% errors.find(obj=>{ %>
+                            <% if(obj.param == 'file'){ %>
+                                <span><%= obj.msg %></span>
+                            <% } %>
+                        <% }); %>
+                    <% } %>
                 </div>
                 <input type="submit" value="Edit" class="common-btn">
                 <a class="common-btn delete-btn" onclick="doDeleteAccount();">Delete account</a>

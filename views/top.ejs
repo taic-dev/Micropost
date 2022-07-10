@@ -29,7 +29,7 @@
               <li class="archive-item">
                 <div class="archive-item__wrapper">
                   <div class="archive-item__user">
-                    <a href="/profile/<%= value.user_name %>"><img src="uploads/<%= value.img %>" alt="user-icon"></a>
+                    <img src="uploads/<%= value.img %>" alt="user-icon">
                     <p><span><%= value.user_name %></span></p>
                   </div>
                   <form action="/delete-post" method="post" class="archive-item__status" onsubmit="return doDelete();">
