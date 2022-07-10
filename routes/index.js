@@ -1,4 +1,5 @@
 const express = require('express');
+const app = express();
 const router = express.Router();
 
 /************************
@@ -10,6 +11,7 @@ const applicationController = require('../controllers/application');
 const resetController = require('../controllers/reset');
 const signupController = require('../controllers/signup');
 const logoutController = require('../controllers/logout');
+const sessionController = require('../controllers/session');
 const topController = require('../controllers/top');
 const profileController = require('../controllers/profile');
 const editController = require('../controllers/edit');
@@ -86,7 +88,7 @@ router.post(
  * Top routing
 ************************/
 
-router.get('/top', topController.showTop);
+router.get('/top',sessionController.judgeSession,topController.showTop);
 
 router.post('/top',topController.addPost);
 
@@ -100,16 +102,17 @@ router.post('/delete-post',topController.deletePost);
  * Logout routing
 ************************/
 
-router.get('/logout',logoutController.doLogout);
+router.get('/logout',sessionController.judgeSession,logoutController.doLogout);
 
 /************************
  * Profile routing
 ************************/
 
-router.get('/profile',profileController.showProfile);
+router.get('/profile',sessionController.judgeSession,profileController.showProfile);
 
 router.get(
     '/profile/:userName',
+    sessionController.judgeSession,
     errorController.issetUser,
     profileController.showProfile
 );
@@ -118,7 +121,7 @@ router.get(
  * Edit routing
 ************************/
 
-router.get('/edit',editController.showEditPage);
+router.get('/edit',sessionController.judgeSession,editController.showEditPage);
 
 router.post(
     '/edit',
@@ -132,6 +135,6 @@ router.post(
  * Delete  routing
 ************************/
 
-router.get('/delete-account/:userName',editController.deleteAccount);
+router.get('/delete-account/:userName',sessionController.judgeSession,editController.deleteAccount);
 
 module.exports = router;

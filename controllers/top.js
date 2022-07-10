@@ -5,7 +5,7 @@ const db = require("../models");
 const topController = {
 
     showTop: async (req, res, next) => {
-        if(req.session.username){
+        // if(req.session.username){
             const user_id = req.session.user_id;
             const username = req.session.username;
             const img = req.session.image
@@ -33,9 +33,9 @@ const topController = {
                 isAuth: isAuth
             });
             
-            return;
-        }
-        res.redirect('/');
+        //     return;
+        // }
+        // res.redirect('/');
     },
 
     addPost: (req, res, next) => {
