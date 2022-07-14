@@ -4,7 +4,18 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
+
+const contentSecurityPolicy = require('helmet-csp');
 const app = express();
+
+app.use(
+  contentSecurityPolicy({
+    useDefaults:true,
+    directives:{ 
+      imgSrc:[ "'self'", "blob:"],
+    }
+  })
+)
 
 const indexRouter = require('./routes');
 

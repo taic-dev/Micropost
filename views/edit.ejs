@@ -43,7 +43,7 @@
                 </div>
                 <div class="form-group form-group__upload">
                     <img src="../uploads/<%= form.img %>" alt="ユーザアイコン" id="image">
-                    <input type="file" id="file-change" name="file" onchange="fileChange(event);">
+                    <input type="file" id="file-change" name="file">
                     <% if(errors){ %>
                         <% errors.find(obj=>{ %>
                             <% if(obj.param == 'file'){ %>
@@ -53,7 +53,7 @@
                     <% } %>
                 </div>
                 <input type="submit" value="Edit" class="common-btn">
-                <a class="common-btn delete-btn" onclick="doDeleteAccount();">Delete account</a>
+                <a id="delete-account" class="common-btn delete-btn">Delete account</a>
             </form>
         </div>
     </section>
@@ -64,5 +64,6 @@
         </div>
     </aside>
 </main>
-<script src="../javascripts/index.js"></script>
+<script src="../javascripts/imageChange.js"></script>
+<script src="../javascripts/deleteAccount.js"></script>
 <%- include('./footer') %>

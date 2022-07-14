@@ -49,7 +49,7 @@
                 </div>
                 <div class="form-group form-group__upload">
                     <img src="uploads/sample.png" alt="ユーザアイコン" id="image">
-                    <input type="file" id="file-change" name="file" onchange="fileChange(event)">
+                    <input type="file" id="file-change" name="file">
                     <% if(errors){ %>
                         <% errors.find(obj=>{ %>
                             <% if(obj.param == 'file'){ %>
@@ -69,4 +69,4 @@
         </div>
     </aside>
 </main>
-<script src="../javascripts/index.js"></script>
+<script src="../javascripts/imageChange.js"></script>

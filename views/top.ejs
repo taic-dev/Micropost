@@ -32,10 +32,12 @@
                     <img src="uploads/<%= value.img %>" alt="user-icon">
                     <p><span><%= value.user_name %></span></p>
                   </div>
-                  <form action="/delete-post" method="post" class="archive-item__status" onsubmit="return doDelete();">
+                  <% if(value.user_name == username){ %>
+                  <form action="/delete-post" method="post" class="archive-item__status delete_post">
                     <input type="hidden" name="micropost_id" value="<%= value.id %>">
                     <input type="submit" value="delete">
                   </form>
+                  <% } %>
                 </div>
 
                 <div class="archive-item__post">
@@ -52,5 +54,6 @@
     </aside>
 </main>
 <script src="../javascripts/index.js"></script>
+<script src="../javascripts/top.js"></script>
 
 <%- include("./footer"); %>
