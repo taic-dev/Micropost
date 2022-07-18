@@ -198,11 +198,15 @@ input:-webkit-autofill {
 }
 
 .password-forget{
-  margin-top: 50px;
+  margin: 50px 0;
   text-align: center;
 }
 
 /* top */
+.top-section{
+  padding-top: 150px;
+}
+
 .user-area{
   display: flex;
   align-items: center;
@@ -330,30 +334,42 @@ input:-webkit-autofill {
 }
 
 
-@media screen and (max-width:900px) {
-  .wrapper,.edit{
-    display: block;
-    max-width: 540px;
-  }
-  .sidebar,.micropost-main{width: auto;}
-  .mypage-main,.mypage-sidebar{width: 100%;}
-
-  /* edit */
-  .edit-form__list{
-    display: block;
+@media screen and (max-width:800px) {
+  .common-main{
+    max-width: 480px;
+    height: auto;
+    margin: 60px auto;
+    flex-direction: column;
   }
 
-  .edit-from__group{
-    height: 60px;
-  }
-
-  .edit-form__item{
-    width: 100%;
-  }
-  .edit-form__item:last-child{
+  .common-section{
     margin-top: 50px;
+    padding: 0;
+    overflow: unset;
+    order: 2;
   }
-  .edit-form__img img{
-    margin-bottom: 20px;
+
+  .common-sidebar{
+    width: 100%;
+    padding: 100px;
+    order: 1;
+    background-color: unset;
+  }
+
+  .common-sidebar__desc{
+    position: unset;
+    color: var(--sub-text-color);
+  }
+
+  .top-section{
+    order: 1;
+  }
+
+  .archive-sidebar{
+    padding: 0;
+  }
+
+  .header{
+    width: 100%;
   }
 }
