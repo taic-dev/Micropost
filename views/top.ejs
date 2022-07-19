@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="archive-item__post">
-                  <p><%- value.message.replace('\r\n','<br>'); %></p>
+                  <p><%- value.message.replace(/\r\n/g,'<br>'); %></p>
                   <time>
                     <%= value.createdAt %>
                   </time>
