@@ -41,21 +41,11 @@ const applicationController = {
         const token = crypto.createHmac('sha256', process.env.APP_KEY).update(randomStr).digest('hex');
         const passwordResetUrl = process.env.APP_URL + 'reset/' + token + '?mail=' + encodeURIComponent(res.locals.mail);
 
-        console.log(token);
-        console.log(res.locals.mail);
-
-        // updateできない
         const result = await db.User.update(
             { token: token },
-            { where: {email: res.locals.mail} },
+            { where: { email: res.locals.mail } },
         );
 
-        console.log(result);
-
-        return;
-        // updateできない
-
-        // メール送信処理
         const transporter = nodemailer.createTransport({
             host: process.env.MAIL_HOST,
             port: process.env.MAIL_POST,
@@ -78,15 +68,14 @@ const applicationController = {
                 console.log(error);
             }else{
                 console.log(info);
+
+                res.render('application',{
+                    isAuth: false,
+                    errors: '',
+                    success: '送付したメールアドレスからパスワードの再設定を行ってください。'
+                });
             }
         });
-
-        res.render('application',{
-            isAuth: false,
-            errors: '',
-            success: '送付したメールアドレスからパスワードの再設定を行ってください。'
-        })
-
     }
 }
 
