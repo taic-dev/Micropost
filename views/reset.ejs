@@ -2,21 +2,47 @@
 <main class="common-main">
     <section class="common-section">
         <div class="common-section__wrapper">
-            <form action="/reset" method="post" class="common-form">
+            <form action="<%= form.action %>" method="post" class="common-form">
+                <% if(errors){ %>
+                    <% errors.find(obj=>{ %>
+                        <% if(obj.param == 'error'){ %>
+                            <span><%= obj.msg %></span>
+                        <% } %>
+                    <% }); %>
+                <% } %>
                 <div class="form-group">
                     <label for="mail">メールアドレス</label>
-                    <input type="mail" value="" name="mail" id="mail">
+                    <input type="mail" value="<%= form.mail %>" name="mail" id="mail">
                 </div>
-                <span><%= errors %></span>
+                <% if(errors){ %>
+                    <% errors.find(obj=>{ %>
+                        <% if(obj.param == 'mail'){ %>
+                            <span><%= obj.msg %></span>
+                        <% } %>
+                    <% }); %>
+                <% } %>
                 <div class="form-group">
-                    <label for="mail">パスワード</label>
-                    <input type="mail" value="" name="mail" id="mail">
+                    <label for="password">パスワード</label>
+                    <input type="password" value="<%= form.password %>" id="password" name="password">
                 </div>
-                <span><%= errors %></span>
+                <% if(errors){ %>
+                    <% errors.find(obj=>{ %>
+                        <% if(obj.param == 'password'){ %>
+                            <span><%= obj.msg %></span>
+                        <% } %>
+                    <% }); %>
+                <% } %>
                 <div class="form-group">
-                    <label for="mail">パスワード確認</label>
-                    <input type="mail" value="" name="mail" id="mail">
+                    <label for="password_confiramation">パスワード確認</label>
+                    <input type="password" value="<%= form.password_confirmation %>" id="password_confiramation" name="password_confirmation">
                 </div>
+                <% if(errors){ %>
+                    <% errors.find(obj=>{ %>
+                        <% if(obj.param == 'password_confirmation'){ %>
+                            <span><%= obj.msg %></span>
+                        <% } %>
+                    <% }); %>
+                <% } %>
                 <input type="hidden" value="token" name="token">
                 <input type="submit" value="Reset" class="common-btn">
                 <span><%= success %></span>

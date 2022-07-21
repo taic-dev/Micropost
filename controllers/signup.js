@@ -93,7 +93,7 @@ const signupController = {
             password: res.locals.password,
             img: res.locals.image,
             delete_flag: 0,
-            token: "test"
+            // token: "test"
         })
 
         if(result !== undefined){
