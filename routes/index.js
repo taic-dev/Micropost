@@ -59,7 +59,7 @@ router.get('/application',applicationController.showApplication);
 
 router.post(
     '/application',
-    validationList.reset,
+    validationList.application,
     applicationController.judgeApplication,
     applicationController.doApplication
 );
@@ -67,8 +67,14 @@ router.post(
 /************************
  * Reset routing
 ************************/
-
 router.get('/reset/:token',resetController.showReset);
+
+router.post(
+    '/reset/:token',
+    validationList.reset,
+    resetController.judgeReset,
+    resetController.doReset
+);
 
 /************************
  * Signup routing
